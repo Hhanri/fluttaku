@@ -6,6 +6,8 @@ import 'package:fluttaku/anime/data/models/anime_search_result_model.dart';
 import 'package:fluttaku/anime/data/data_source/anime_data_source_interface.dart';
 import 'package:fluttaku/anime/domain/entities/anime_episode_links_entity.dart';
 import 'package:fluttaku/anime/domain/entities/anime_info_entity.dart';
+import 'package:fluttaku/core/constants/default_page_size.dart';
+import 'package:fluttaku/core/error/failure.dart';
 import 'package:http/http.dart' as http;
 
 class AnimeRemoteDataSource implements AnimeDataSourceInterface {
@@ -26,32 +28,31 @@ class AnimeRemoteDataSource implements AnimeDataSourceInterface {
   @override
   Future<AnimeSearchResultModel> genericSearch({required String uri}) async {
     final response = await _client.get(Uri.parse(uri));
+    
+    final Map<String, dynamic> body = await jsonDecode(response.body);
 
     if (response.statusCode != 200) {
-      //TODO: handle error
-      print("ERROR");
+      throw Failure(code: response.statusCode, message: body.toString());
     }
-
-    final Map<String, dynamic> body = await jsonDecode(response.body);
 
     final searchResult = AnimeSearchResultModel.fromJson(body);
     return searchResult;
   }
 
   @override
-  Future<AnimeSearchResultModel> searchAnime({required String query, required int page, int pageSize = 10}) async {
+  Future<AnimeSearchResultModel> searchAnime({required String query, required int page, int pageSize = defaultPageSize}) async {
     final uri = "$apiBaseUrl$query${pageParams(page: page, pageSize: pageSize)}";
     return await genericSearch(uri: uri);
   }
 
   @override
-  Future<AnimeSearchResultModel> fetchPopularAnimes({required int page, int pageSize = 10}) async {
+  Future<AnimeSearchResultModel> fetchPopularAnimes({required int page, int pageSize = defaultPageSize}) async {
     final uri = "$apiBaseUrl$_popularEndPoint${pageParams(page: page, pageSize: pageSize)}";
     return await genericSearch(uri: uri);
   }
 
   @override
-  Future<AnimeSearchResultModel> fetchTrendingAnimes({required int page, int pageSize = 10}) async {
+  Future<AnimeSearchResultModel> fetchTrendingAnimes({required int page, int pageSize = defaultPageSize}) async {
     final uri = "$apiBaseUrl$_trendingEndPoint${pageParams(page: page, pageSize: pageSize)}";
     return await genericSearch(uri: uri);
   }
