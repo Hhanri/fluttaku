@@ -5,8 +5,8 @@ import 'package:fluttaku/anime/domain/entities/anime_title_entity.dart';
 abstract class AnimeInfoEntity {
   final String id;
   final AnimeTitleEntity title;
-  final String posterImage;
   final String coverImage;
+  final String bannerImage;
   final String color;
   final String description;
   final String status;
@@ -27,8 +27,8 @@ abstract class AnimeInfoEntity {
   AnimeInfoEntity({
     required this.id,
     required this.title,
-    required this.posterImage,
     required this.coverImage,
+    required this.bannerImage,
     required this.color,
     required this.description,
     required this.status,
