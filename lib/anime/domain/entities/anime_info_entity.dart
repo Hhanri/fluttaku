@@ -1,5 +1,5 @@
 import 'package:fluttaku/anime/domain/entities/anime_episode_info_entity.dart';
-import 'package:fluttaku/anime/domain/entities/anime_search_entity.dart';
+import 'package:fluttaku/anime/domain/entities/anime_preview_entity.dart';
 import 'package:fluttaku/anime/domain/entities/anime_title_entity.dart';
 
 abstract class AnimeInfoEntity {
@@ -21,7 +21,7 @@ abstract class AnimeInfoEntity {
   final int duration;
   final List<String> studios;
   final String type;
-  final List<AnimeSearchEntity> recommendations;
+  final List<AnimePreviewEntity> recommendations;
   final List<AnimeEpisodeInfoEntity> episodes;
 
   AnimeInfoEntity({
