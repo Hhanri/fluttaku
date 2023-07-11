@@ -26,8 +26,8 @@ class AnimeApiRepositoryImpl implements AnimeAPIRepositoryInterface {
   }
 
   @override
-  Future<AnimeSearchResultEntity> popularAnime({required int page, int pageSize = 10}) {
-    return dataSource.popularAnime(page: page, pageSize: pageSize);
+  Future<AnimeSearchResultEntity> fetchPopularAnimes({required int page, int pageSize = 10}) {
+    return dataSource.fetchPopularAnimes(page: page, pageSize: pageSize);
   }
 
   @override
@@ -36,8 +36,8 @@ class AnimeApiRepositoryImpl implements AnimeAPIRepositoryInterface {
   }
 
   @override
-  Future<AnimeSearchResultEntity> trendingAnime({required int page, int pageSize = 10}) {
-    return dataSource.trendingAnime(page: page, pageSize: pageSize);
+  Future<AnimeSearchResultEntity> fetchTrendingAnimes({required int page, int pageSize = 10}) {
+    return dataSource.fetchTrendingAnimes(page: page, pageSize: pageSize);
   }
 
 }

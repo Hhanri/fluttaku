@@ -45,13 +45,13 @@ class AnimeRemoteDataSource implements AnimeDataSourceInterface {
   }
 
   @override
-  Future<AnimeSearchResultModel> popularAnime({required int page, int pageSize = 10}) async {
+  Future<AnimeSearchResultModel> fetchPopularAnimes({required int page, int pageSize = 10}) async {
     final uri = "$apiBaseUrl$_popularEndPoint${pageParams(page: page, pageSize: pageSize)}";
     return await genericSearch(uri: uri);
   }
 
   @override
-  Future<AnimeSearchResultModel> trendingAnime({required int page, int pageSize = 10}) async {
+  Future<AnimeSearchResultModel> fetchTrendingAnimes({required int page, int pageSize = 10}) async {
     final uri = "$apiBaseUrl$_trendingEndPoint${pageParams(page: page, pageSize: pageSize)}";
     return await genericSearch(uri: uri);
   }

@@ -8,9 +8,9 @@ abstract class AnimeAPIRepositoryInterface {
 
   Future<AnimeSearchResultEntity> searchAnime({required String query, required int page, int pageSize = 10});
 
-  Future<AnimeSearchResultEntity> popularAnime({required int page, int pageSize = 10});
+  Future<AnimeSearchResultEntity> fetchPopularAnimes({required int page, int pageSize = 10});
 
-  Future<AnimeSearchResultEntity> trendingAnime({required int page, int pageSize = 10});
+  Future<AnimeSearchResultEntity> fetchTrendingAnimes({required int page, int pageSize = 10});
 
   Future<AnimeInfoEntity> fetchAnimeInfo({required String animeId});
 
