@@ -34,4 +34,7 @@ class AnimeDTOConstants {
   static const String isM3U8 = "isM3U8";
   static const String download = "download";
   static const String sources = "sources";
+  static const String hasNextPage = "hasNextPage";
+  static const String currentPage = "currentPage";
+  static const String results = "results";
 }
