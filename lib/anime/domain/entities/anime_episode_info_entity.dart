@@ -1,4 +1,4 @@
-class AnimeEpisodeInfoEntity {
+abstract class AnimeEpisodeInfoEntity {
   final String id;
   final String title;
   final String description;

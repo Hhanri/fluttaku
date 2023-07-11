@@ -1,4 +1,4 @@
-class AnimeEpisodeStreamingSourceEntity {
+abstract class AnimeEpisodeStreamingSourceEntity {
   final String url;
   final bool isM3U8;
   final String quality;

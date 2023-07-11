@@ -1,4 +1,4 @@
-class AnimeTitleEntity {
+abstract class AnimeTitleEntity {
   final String romaji;
   final String english;
   final String native;

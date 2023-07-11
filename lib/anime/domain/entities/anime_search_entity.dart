@@ -1,6 +1,6 @@
 import 'package:fluttaku/anime/domain/entities/anime_title_entity.dart';
 
-class AnimeSearchEntity {
+abstract class AnimeSearchEntity {
   final String id;
   final AnimeTitleEntity title;
   final String status;

@@ -2,7 +2,7 @@ import 'package:fluttaku/anime/domain/entities/anime_episode_info_entity.dart';
 import 'package:fluttaku/anime/domain/entities/anime_search_entity.dart';
 import 'package:fluttaku/anime/domain/entities/anime_title_entity.dart';
 
-class AnimeInfoEntity {
+abstract class AnimeInfoEntity {
   final String id;
   final AnimeTitleEntity title;
   final String posterImage;
