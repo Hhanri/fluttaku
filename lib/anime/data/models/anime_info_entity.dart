@@ -1,9 +1,7 @@
 import 'package:fluttaku/anime/data/models/anime_episode_info_model.dart';
 import 'package:fluttaku/anime/data/models/anime_preview_entity.dart';
 import 'package:fluttaku/anime/data/models/anime_title_entity.dart';
-import 'package:fluttaku/anime/domain/entities/anime_episode_info_entity.dart';
 import 'package:fluttaku/anime/domain/entities/anime_info_entity.dart';
-import 'package:fluttaku/anime/domain/entities/anime_preview_entity.dart';
 import 'package:fluttaku/core/constants/anime_dto_constants.dart';
 
 class AnimeInfoModel extends AnimeInfoEntity {
@@ -52,11 +50,11 @@ class AnimeInfoModel extends AnimeInfoEntity {
       type: json[AnimeDTOConstants.type],
       recommendations:
         (json[AnimeDTOConstants.recommendations] as List<Map<String, dynamic>>)
-          .map<AnimePreviewEntity>((e) => AnimePreviewModel.fromJson(e))
+          .map<AnimePreviewModel>((e) => AnimePreviewModel.fromJson(e))
           .toList(),
       episodes:
         (json[AnimeDTOConstants.episodes] as List<Map<String, dynamic>>)
-          .map<AnimeEpisodeInfoEntity>((e) => AnimeEpisodeInfoModel.fromJson(e))
+          .map<AnimeEpisodeInfoModel>((e) => AnimeEpisodeInfoModel.fromJson(e))
           .toList()
     );
   }
