@@ -4,6 +4,8 @@ import 'package:fluttaku/anime/domain/entities/anime_search_result_entity.dart';
 
 abstract class AnimeAPIRepositoryInterface {
 
+  Future<AnimeSearchResultEntity> genericSearch({required String uri});
+
   Future<AnimeSearchResultEntity> searchAnime({required String query, required int page, int pageSize = 10});
 
   Future<AnimeSearchResultEntity> popularAnime({required int page, int pageSize = 10});
