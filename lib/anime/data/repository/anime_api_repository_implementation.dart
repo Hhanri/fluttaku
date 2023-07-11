@@ -10,7 +10,7 @@ import 'package:http/http.dart' as http;
 
 class AnimeAPIRepositoryImpl implements AnimeAPIRepositoryInterface {
 
-  final http.Client client = http.Client();
+  final http.Client _client = http.Client();
   final String apiBaseUrl = 'https://api.consumet.org/meta/anilist/';
   final String _infoEndPoint = "info/";
   final String _watchEndPoint = "watch/";
@@ -25,10 +25,11 @@ class AnimeAPIRepositoryImpl implements AnimeAPIRepositoryInterface {
 
   @override
   Future<AnimeSearchResultModel> genericSearch({required String uri}) async {
-    final response = await client.get(Uri.parse(uri));
+    final response = await _client.get(Uri.parse(uri));
 
     if (response.statusCode != 200) {
       //TODO: handle error
+      print("ERROR");
     }
 
     final Map<String, dynamic> body = await jsonDecode(response.body);
@@ -58,7 +59,7 @@ class AnimeAPIRepositoryImpl implements AnimeAPIRepositoryInterface {
   @override
   Future<AnimeInfoEntity> fetchAnimeInfo({required String animeId}) async {
     final uri = "$apiBaseUrl$_infoEndPoint$animeId";
-    final response = await client.get(Uri.parse(uri));
+    final response = await _client.get(Uri.parse(uri));
 
     if (response.statusCode != 200) {
       //TODO: handle error
@@ -75,7 +76,7 @@ class AnimeAPIRepositoryImpl implements AnimeAPIRepositoryInterface {
     final url = "$apiBaseUrl$_watchEndPoint$episodeId";
     final uri = Uri.parse(url);
 
-    final response = await client.get(uri);
+    final response = await _client.get(uri);
 
     if (response.statusCode != 200) {
       //TODO: handle error
