@@ -15,13 +15,13 @@ class AnimePreviewModel extends AnimePreviewEntity {
 
   factory AnimePreviewModel.fromJson(Map<String, dynamic> json) {
     return AnimePreviewModel(
-      id: json[AnimeDTOConstants.id],
+      id: json[AnimeDTOConstants.id].toString(),
       title: AnimeTitleModel.formJson(json[AnimeDTOConstants.title]),
       status: json[AnimeDTOConstants.status],
       posterImage: json[AnimeDTOConstants.image],
       type: json[AnimeDTOConstants.type],
       rating: json[AnimeDTOConstants.rating],
-      genres: json[AnimeDTOConstants.genres]
+      genres: List<String>.from(json[AnimeDTOConstants.genres] ?? [])
     );
   }
 }

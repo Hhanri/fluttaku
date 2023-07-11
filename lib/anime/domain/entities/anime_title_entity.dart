@@ -1,6 +1,6 @@
 abstract class AnimeTitleEntity {
   final String romaji;
-  final String english;
+  final String? english;
   final String native;
 
   AnimeTitleEntity({

@@ -14,7 +14,7 @@ class AnimeEpisodeInfoModel extends AnimeEpisodeInfoEntity {
     return AnimeEpisodeInfoModel(
       id: json[AnimeDTOConstants.id],
       title: json[AnimeDTOConstants.title],
-      description: json[AnimeDTOConstants.description],
+      description: json[AnimeDTOConstants.description] ?? "",
       number: json[AnimeDTOConstants.number],
       thumbnail: json[AnimeDTOConstants.image]
     );

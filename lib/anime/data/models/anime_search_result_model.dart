@@ -13,7 +13,7 @@ class AnimeSearchResultModel extends AnimeSearchResultEntity {
     return AnimeSearchResultModel(
       hasNextPage: json[AnimeDTOConstants.hasNextPage],
       currentPage: json[AnimeDTOConstants.currentPage],
-      animes: (json[AnimeDTOConstants.results] as List<Map<String, dynamic>>)
+      animes: (json[AnimeDTOConstants.results] as List<dynamic>)
         .map<AnimePreviewModel>((e) => AnimePreviewModel.fromJson(e))
         .toList()
     );

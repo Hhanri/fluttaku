@@ -11,7 +11,7 @@ class AnimeEpisodeLinksModel extends AnimeEpisodeLinksEntity {
   factory AnimeEpisodeLinksModel.fromJson(Map<String, dynamic> json) {
     return AnimeEpisodeLinksModel(
       sources:
-        (json[AnimeDTOConstants.sources] as List<Map<String, dynamic>>)
+        (json[AnimeDTOConstants.sources] as List<dynamic>)
           .map<AnimeEpisodeStreamingSourceModel>((e) => AnimeEpisodeStreamingSourceModel.fromJson(e))
           .toList(),
       downloadUrl: json[AnimeDTOConstants.download]

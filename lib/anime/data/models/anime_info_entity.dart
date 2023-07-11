@@ -41,19 +41,19 @@ class AnimeInfoModel extends AnimeInfoEntity {
       startDate: _Date.fromJson(json[AnimeDTOConstants.startDate]).toDateTime(),
       endDate: _Date.fromJson(json[AnimeDTOConstants.endDate]).toDateTime(),
       season: json[AnimeDTOConstants.season],
-      genres: json[AnimeDTOConstants.genres],
+      genres: List<String>.from(json[AnimeDTOConstants.genres]),
       rating: json[AnimeDTOConstants.rating],
       totalEpisodes: json[AnimeDTOConstants.totalEpisodes],
       currentEpisode: json[AnimeDTOConstants.currentEpisode],
       duration: json[AnimeDTOConstants.duration],
-      studios: json[AnimeDTOConstants.studios],
+      studios: List<String>.from(json[AnimeDTOConstants.studios]),
       type: json[AnimeDTOConstants.type],
       recommendations:
-        (json[AnimeDTOConstants.recommendations] as List<Map<String, dynamic>>)
+        (json[AnimeDTOConstants.recommendations] as List<dynamic>)
           .map<AnimePreviewModel>((e) => AnimePreviewModel.fromJson(e))
           .toList(),
       episodes:
-        (json[AnimeDTOConstants.episodes] as List<Map<String, dynamic>>)
+        (json[AnimeDTOConstants.episodes] as List<dynamic>)
           .map<AnimeEpisodeInfoModel>((e) => AnimeEpisodeInfoModel.fromJson(e))
           .toList()
     );

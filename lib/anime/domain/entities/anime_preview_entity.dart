@@ -6,7 +6,7 @@ abstract class AnimePreviewEntity {
   final String status;
   final String posterImage;
   final String type;
-  final int rating;
+  final int? rating;
   final List<String> genres;
 
   AnimePreviewEntity({
