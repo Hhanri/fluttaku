@@ -22,5 +22,5 @@ abstract class BaseQueryCubit<U extends UseCase<SearchResultInterface<I>, QueryP
 
   List<I> items = [];
 
-  void fetch();
+  void fetchMore();
 }
