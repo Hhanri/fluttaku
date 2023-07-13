@@ -5,13 +5,13 @@ import 'package:fluttaku/core/error/failure.dart';
 import 'package:fluttaku/core/use_cases/use_case.dart';
 import 'package:fluttaku/core/utils/anime_params.dart';
 
-class FetchPopularAnimesUseCase extends UseCase<AnimeSearchResultEntity, AnimeParams>{
+class FetchPopularAnimesUseCase extends UseCase<AnimeSearchResultEntity, AnimeQueryParams>{
   final AnimeAPIRepositoryInterface apiRepo;
 
   FetchPopularAnimesUseCase(this.apiRepo);
 
   @override
-  Future<Either<Failure, AnimeSearchResultEntity>> call(AnimeParams params) {
+  Future<Either<Failure, AnimeSearchResultEntity>> call(AnimeQueryParams params) {
     return apiRepo.fetchPopularAnimes(page: params.page, pageSize: params.pageSize);
   }
 }
