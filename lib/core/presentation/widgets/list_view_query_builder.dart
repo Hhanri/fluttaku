@@ -11,6 +11,7 @@ class ListViewQueryBuilder<I> extends QueryBuilder<I> {
   final Axis scrollDirection;
   final bool reverse;
   final Clip clipBehavior;
+
   ListViewQueryBuilder({
     super.key,
     required this.itemBuilder,
