@@ -1,13 +1,17 @@
 import 'package:fluttaku/anime/domain/entities/anime_preview_entity.dart';
+import 'package:fluttaku/core/interfaces/search_result_interface.dart';
 
-abstract class AnimeSearchResultEntity {
-  final bool hasNextPage;
-  final int currentPage;
-  final List<AnimePreviewEntity> animes;
-
+abstract class AnimeSearchResultEntity extends SearchResultInterface<AnimePreviewEntity> {
   AnimeSearchResultEntity({
-    required this.hasNextPage,
-    required this.currentPage,
-    required this.animes
+    required super.hasNextPage,
+    required super.currentPage,
+    required super.items
+  });
+
+  @override
+  AnimeSearchResultEntity copyWith({
+    bool? hasNextPage,
+    int? currentPage,
+    List<AnimePreviewEntity>? items
   });
 }
