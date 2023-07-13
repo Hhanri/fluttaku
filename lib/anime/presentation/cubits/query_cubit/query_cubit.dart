@@ -1,6 +1,6 @@
 import 'package:fluttaku/anime/data/models/anime_search_result_model.dart';
 import 'package:fluttaku/anime/domain/entities/anime_preview_entity.dart';
-import 'package:fluttaku/core/cubits/base_query_cubit/base_query_cubit.dart';
+import 'package:fluttaku/core/presentation/base_query_cubit/base_query_cubit.dart';
 import 'package:fluttaku/core/utils/anime_query_params.dart';
 
 class QueryCubit extends BaseQueryCubit<AnimePreviewEntity> {

@@ -1,5 +1,5 @@
-import 'package:fluttaku/anime/presentation/widgets/query_builder.dart';
-import 'package:fluttaku/core/cubits/base_query_cubit/base_query_cubit.dart';
+import 'package:fluttaku/core/presentation/base_query_cubit/base_query_cubit.dart';
+import 'package:fluttaku/core/presentation/widgets/query_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
