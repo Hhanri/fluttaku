@@ -1,9 +1,12 @@
+import 'package:fluttaku/core/interfaces/search_result_interface.dart';
 import 'package:fluttaku/core/presentation/base_query_cubit/base_query_cubit.dart';
 import 'package:fluttaku/core/presentation/widgets/query_builder.dart';
+import 'package:fluttaku/core/use_cases/use_case.dart';
+import 'package:fluttaku/core/utils/anime_query_params.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ListViewQueryBuilder<I> extends QueryBuilder<I> {
+class ListViewQueryBuilder<U extends UseCase<SearchResultInterface<I>, QueryParams>, I> extends QueryBuilder<U, I> {
   final Widget Function(BuildContext context, I item) itemBuilder;
   final bool shrinkWrap;
   final EdgeInsets? padding;
@@ -32,7 +35,7 @@ class ListViewQueryBuilder<I> extends QueryBuilder<I> {
         clipBehavior: clipBehavior,
         itemCount: state.result.items.length,
         itemBuilder: (context, index) {
-          if (state.isLastItem(index) && state.hasMore) context.read<BaseQueryCubit<I>>().fetch();
+          if (state.isLastItem(index) && state.hasMore) context.read<BaseQueryCubit<U, I>>().fetch();
 
           final doc = state.result.items[index];
           return itemBuilder(context, doc);

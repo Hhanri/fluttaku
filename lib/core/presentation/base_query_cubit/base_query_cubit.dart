@@ -8,8 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'base_query_state.dart';
 
-abstract class BaseQueryCubit<I> extends Cubit<BaseQueryState<I>> {
-  final UseCase<SearchResultInterface<I>, QueryParams> useCase;
+abstract class BaseQueryCubit<U extends UseCase<SearchResultInterface<I>, QueryParams>, I> extends Cubit<BaseQueryState<I>> {
+  final U useCase;
   final int pageSize;
   BaseQueryCubit({
     required this.useCase,
