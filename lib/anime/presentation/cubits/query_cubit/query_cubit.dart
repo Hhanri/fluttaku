@@ -6,7 +6,7 @@ import 'package:fluttaku/core/utils/anime_query_params.dart';
 class QueryCubit extends BaseQueryCubit<AnimePreviewEntity> {
 
   QueryCubit({
-    required super.query,
+    required super.useCase,
     required super.pageSize
   });
 
@@ -14,7 +14,7 @@ class QueryCubit extends BaseQueryCubit<AnimePreviewEntity> {
   void fetch() async {
     if (!hasMore || isFetching) return;
 
-    final result = await query(AnimeQueryParams(page: currentPage + 1, pageSize: pageSize));
+    final result = await useCase.call(QueryParams(page: currentPage + 1, pageSize: pageSize));
     isFetching = false;
 
     result.fold(
