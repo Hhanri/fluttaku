@@ -4,10 +4,14 @@ import 'package:fluttaku/anime/domain/entities/anime_search_result_entity.dart';
 import 'package:fluttaku/core/presentation/base_query_cubit/base_query_cubit.dart';
 import 'package:fluttaku/core/use_cases/use_case.dart';
 import 'package:fluttaku/core/utils/anime_query_params.dart';
+import 'package:flutter/cupertino.dart';
 
-abstract class AnimesQueryCubit<U extends UseCase<AnimeSearchResultEntity, QueryParams>> extends BaseQueryCubit<U, AnimePreviewEntity> {
+abstract class SearchQueryCubit<U extends UseCase<AnimeSearchResultEntity, SearchQueryParams>> extends BaseQueryCubit<U, AnimePreviewEntity> {
 
-  AnimesQueryCubit({
+  final TextEditingController textController = TextEditingController();
+  String query = "";
+
+  SearchQueryCubit({
     required super.useCase,
     required super.pageSize
   });
@@ -16,7 +20,13 @@ abstract class AnimesQueryCubit<U extends UseCase<AnimeSearchResultEntity, Query
   void fetch() async {
     if (!hasMore || isFetching) return;
 
-    final result = await useCase.call(QueryParams(page: currentPage + 1, pageSize: pageSize));
+    final result = await useCase.call(
+      SearchQueryParams(
+        query: textController.text,
+        page: currentPage + 1,
+        pageSize: pageSize
+      )
+    );
     isFetching = false;
 
     result.fold(
@@ -37,5 +47,17 @@ abstract class AnimesQueryCubit<U extends UseCase<AnimeSearchResultEntity, Query
         emit(BaseQuerySuccessState(result: searchResult, hasMore: hasMore));
       }
     );
+  }
+
+  void search() {
+    if (query == textController.text) return;
+    query = textController.text;
+    fetch();
+  }
+
+  @override
+  Future<void> close() async {
+    textController.dispose();
+    super.close();
   }
 }
