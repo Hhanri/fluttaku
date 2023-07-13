@@ -9,13 +9,17 @@ class ListViewQueryBuilder<I> extends QueryBuilder<I> {
   final EdgeInsets? padding;
   final ScrollPhysics? physics;
   final Axis scrollDirection;
+  final bool reverse;
+  final Clip clipBehavior;
   ListViewQueryBuilder({
     super.key,
     required this.itemBuilder,
     this.shrinkWrap = false,
     this.padding,
     this.physics,
-    this.scrollDirection = Axis.vertical
+    this.scrollDirection = Axis.vertical,
+    this.reverse = false,
+    this.clipBehavior = Clip.hardEdge,
   }) : super(
     builder: (context, state) {
       return ListView.builder(
@@ -23,6 +27,8 @@ class ListViewQueryBuilder<I> extends QueryBuilder<I> {
         padding: padding,
         physics: physics,
         scrollDirection: scrollDirection,
+        reverse: reverse,
+        clipBehavior: clipBehavior,
         itemCount: state.result.items.length,
         itemBuilder: (context, index) {
           if (state.isLastItem(index) && state.hasMore) context.read<BaseQueryCubit<I>>().fetch();

@@ -7,7 +7,7 @@ class AnimePreviewModel extends AnimePreviewEntity {
     required super.id,
     required super.title,
     required super.status,
-    required super.posterImage,
+    required super.coverImage,
     required super.type,
     required super.rating,
     required super.genres
@@ -18,7 +18,7 @@ class AnimePreviewModel extends AnimePreviewEntity {
       id: json[AnimeDTOConstants.id].toString(),
       title: AnimeTitleModel.formJson(json[AnimeDTOConstants.title]),
       status: json[AnimeDTOConstants.status],
-      posterImage: json[AnimeDTOConstants.image],
+      coverImage: json[AnimeDTOConstants.image],
       type: json[AnimeDTOConstants.type],
       rating: json[AnimeDTOConstants.rating],
       genres: List<String>.from(json[AnimeDTOConstants.genres] ?? [])
