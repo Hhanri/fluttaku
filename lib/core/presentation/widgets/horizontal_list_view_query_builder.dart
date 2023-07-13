@@ -18,14 +18,14 @@ class HorizontalListViewQueryBuilder<
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider<BaseQueryCubit<U, I>>(
+    return BlocProvider<C>(
       create: (context) => sl.get<C>(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(title),
           Expanded(
-            child: ListViewQueryBuilder<U, I>(
+            child: ListViewQueryBuilder<C, U, I>(
               scrollDirection: Axis.horizontal,
               itemBuilder: itemBuilder,
             ),

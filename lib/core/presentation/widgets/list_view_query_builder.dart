@@ -6,7 +6,11 @@ import 'package:fluttaku/core/utils/anime_query_params.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ListViewQueryBuilder<U extends UseCase<SearchResultInterface<I>, QueryParams>, I> extends QueryBuilder<U, I> {
+class ListViewQueryBuilder<
+  C extends BaseQueryCubit<U, I>,
+  U extends UseCase<SearchResultInterface<I>, QueryParams>,
+  I
+> extends QueryBuilder<C, U, I> {
   final Widget Function(BuildContext context, I item) itemBuilder;
   final bool shrinkWrap;
   final EdgeInsets? padding;
@@ -35,7 +39,7 @@ class ListViewQueryBuilder<U extends UseCase<SearchResultInterface<I>, QueryPara
         clipBehavior: clipBehavior,
         itemCount: state.result.items.length,
         itemBuilder: (context, index) {
-          if (state.isLastItem(index) && state.hasMore) context.read<BaseQueryCubit<U, I>>().fetch();
+          if (state.isLastItem(index) && state.hasMore) context.read<C>().fetchMore();
 
           final doc = state.result.items[index];
           return itemBuilder(context, doc);

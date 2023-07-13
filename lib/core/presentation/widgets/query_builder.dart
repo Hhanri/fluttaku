@@ -6,7 +6,11 @@ import 'package:fluttaku/core/utils/anime_query_params.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class QueryBuilder<U extends UseCase<SearchResultInterface<I>, QueryParams>, I> extends StatefulWidget {
+class QueryBuilder<
+  C extends BaseQueryCubit<U, I>,
+  U extends UseCase<SearchResultInterface<I>, QueryParams>,
+  I
+> extends StatefulWidget {
 
   final Widget Function(BuildContext context, BaseQuerySuccessState<I> state) builder;
   final Widget Function(BuildContext context, Failure error)? errorBuilder;
@@ -21,15 +25,19 @@ class QueryBuilder<U extends UseCase<SearchResultInterface<I>, QueryParams>, I> 
   }) : super(key: key);
 
   @override
-  State<QueryBuilder<U, I>> createState() => _QueryBuilderState<U, I>();
+  State<QueryBuilder<C, U, I>> createState() => _QueryBuilderState<C, U, I>();
 }
 
-class _QueryBuilderState<U extends UseCase<SearchResultInterface<I>, QueryParams>, I> extends State<QueryBuilder<U, I>> with AutomaticKeepAliveClientMixin {
+class _QueryBuilderState<
+  C extends BaseQueryCubit<U, I>,
+  U extends UseCase<SearchResultInterface<I>, QueryParams>,
+  I
+> extends State<QueryBuilder<C, U, I>> with AutomaticKeepAliveClientMixin {
 
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return BlocBuilder<BaseQueryCubit<U, I>, BaseQueryState<I>>(
+    return BlocBuilder<C, BaseQueryState<I>>(
       builder: (context, state) {
         if (state is BaseQueryErrorState<I>) {
           return widget.errorBuilder?.call(context, state.failure)
