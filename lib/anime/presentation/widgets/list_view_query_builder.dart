@@ -25,7 +25,7 @@ class _ListViewQueryBuilderState<I> extends State<ListViewQueryBuilder<I>> with 
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return BlocBuilder<BaseQueryCubit<I>, BaseQueryState>(
+    return BlocBuilder<BaseQueryCubit<I>, BaseQueryState<I>>(
       builder: (context, state) {
         if (state is BaseQueryErrorState<I>) {
           return Center(
