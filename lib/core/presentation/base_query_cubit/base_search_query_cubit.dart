@@ -9,7 +9,7 @@ abstract class BaseSearchQueryCubit<U extends UseCase<SearchResultInterface<I>, 
   final TextEditingController textController = TextEditingController();
   String query = "";
 
-  BaseSearchQueryCubit({required super.useCase, required super.pageSize});
+  BaseSearchQueryCubit({required super.useCase, required super.pageSize}) : super(initialState: const BaseQueryNoInputState());
 
   @override
   void fetchMore();

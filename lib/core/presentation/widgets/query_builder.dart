@@ -15,13 +15,16 @@ class QueryBuilder<
   final Widget Function(BuildContext context, BaseQuerySuccessState<I> state) builder;
   final Widget Function(BuildContext context, Failure error)? errorBuilder;
   final Widget Function(BuildContext context)? loadingBuilder;
+  final Widget Function(BuildContext context)? noInputBuilder;
+  final Widget Function(BuildContext context)? emptyBuilder;
 
   const QueryBuilder({
     Key? key,
     required this.builder,
     this.errorBuilder,
     this.loadingBuilder,
-
+    this.noInputBuilder,
+    this.emptyBuilder
   }) : super(key: key);
 
   @override
@@ -39,14 +42,31 @@ class _QueryBuilderState<
     super.build(context);
     return BlocBuilder<C, BaseQueryState<I>>(
       builder: (context, state) {
+
         if (state is BaseQueryErrorState<I>) {
+
           return widget.errorBuilder?.call(context, state.failure)
-            ?? Center(child: Text(state.failure.message));
+              ?? Center(child: Text(state.failure.message));
+
+        } else if (state is BaseQueryNoInputState) {
+
+          return widget.noInputBuilder?.call(context)
+            ?? const Center(child: Text("Waiting for Input"),);
+
         } else if (state is BaseQuerySuccessState<I>) {
+
+          if (state.result.items.isEmpty) {
+            return widget.emptyBuilder?.call(context)
+              ?? const Center(child: Text("No item found"),);
+          }
+
           return widget.builder(context, state);
+
         } else {
+
           return widget.loadingBuilder?.call(context)
             ?? const Center(child: CircularProgressIndicator());
+
         }
       }
     );

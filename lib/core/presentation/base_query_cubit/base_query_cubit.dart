@@ -11,10 +11,12 @@ part 'base_query_state.dart';
 abstract class BaseQueryCubit<U extends UseCase<SearchResultInterface<I>, QueryParams>, I> extends Cubit<BaseQueryState<I>> {
   final U useCase;
   final int pageSize;
+  final BaseQueryState<I> initialState;
   BaseQueryCubit({
     required this.useCase,
-    required this.pageSize
-  }) : super(BaseQueryLoading<I>());
+    required this.pageSize,
+    this.initialState = const BaseQueryLoading()
+  } ) : super(initialState);
 
   int currentPage = 0;
   bool hasMore = true;

@@ -66,7 +66,6 @@ class AnimeSearchQueryCubit extends BaseSearchQueryCubit<SearchAnimeUseCase, Ani
         emit(BaseQueryErrorState(failure: error));
       },
       (success) {
-        print("NEW SEARCH SUCCESS");
         currentPage++;
         hasMore = success.hasNextPage;
         items = success.items;
