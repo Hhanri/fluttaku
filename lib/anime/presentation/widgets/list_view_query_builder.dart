@@ -1,60 +1,36 @@
+import 'package:fluttaku/anime/presentation/widgets/query_builder.dart';
 import 'package:fluttaku/core/cubits/base_query_cubit/base_query_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ListViewQueryBuilder<I> extends StatefulWidget {
-
-  final Widget Function(BuildContext context, I doc) itemBuilder;
+class ListViewQueryBuilder<I> extends QueryBuilder<I> {
+  final Widget Function(BuildContext context, I item) itemBuilder;
+  final bool shrinkWrap;
   final EdgeInsets? padding;
   final ScrollPhysics? physics;
   final Axis scrollDirection;
-  const ListViewQueryBuilder({
-    Key? key,
+  ListViewQueryBuilder({
+    super.key,
     required this.itemBuilder,
+    this.shrinkWrap = false,
     this.padding,
     this.physics,
     this.scrollDirection = Axis.vertical
-  }) : super(key: key);
+  }) : super(
+    builder: (context, state) {
+      return ListView.builder(
+        shrinkWrap: shrinkWrap,
+        padding: padding,
+        physics: physics,
+        scrollDirection: scrollDirection,
+        itemCount: state.result.items.length,
+        itemBuilder: (context, index) {
+          if (state.isLastItem(index) && state.hasMore) context.read<BaseQueryCubit<I>>().fetch();
 
-  @override
-  State<ListViewQueryBuilder<I>> createState() => _ListViewQueryBuilderState<I>();
-}
-
-class _ListViewQueryBuilderState<I> extends State<ListViewQueryBuilder<I>> with AutomaticKeepAliveClientMixin {
-
-  @override
-  Widget build(BuildContext context) {
-    super.build(context);
-    return BlocBuilder<BaseQueryCubit<I>, BaseQueryState<I>>(
-      builder: (context, state) {
-        if (state is BaseQueryErrorState<I>) {
-          return Center(
-            child: Text(
-              state.failure.message
-            ),
-          );
-        } else if (state is BaseQuerySuccessState<I>) {
-          return ListView.builder(
-            padding: widget.padding,
-            physics: widget.physics,
-            scrollDirection: widget.scrollDirection,
-            itemCount: state.result.items.length,
-            itemBuilder: (context, index) {
-              if (state.isLastItem(index) && state.hasMore) context.read<BaseQueryCubit<I>>().fetch();
-
-              final doc = state.result.items[index];
-              return widget.itemBuilder(context, doc);
-            }
-          );
-        } else {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+          final doc = state.result.items[index];
+          return itemBuilder(context, doc);
         }
-      }
-    );
-  }
-
-  @override
-  bool get wantKeepAlive => true;
+      );
+    }
+  );
 }
