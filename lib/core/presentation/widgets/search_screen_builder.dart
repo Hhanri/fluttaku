@@ -25,8 +25,8 @@ class SearchScreenBuilder<
           ),
         ),
         IconButton(
-            onPressed: context.read<C>().search,
-            icon: const Icon(Icons.search)
+          onPressed: context.read<C>().search,
+          icon: const Icon(Icons.search)
         )
       ],
     );
