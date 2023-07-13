@@ -1,16 +1,16 @@
 part of 'base_query_cubit.dart';
 
 @immutable
-abstract class BaseQueryState<T extends SearchResultInterface> extends Equatable {}
+abstract class BaseQueryState<I> extends Equatable {}
 
-class BaseQueryLoading<T extends SearchResultInterface> extends BaseQueryState<T> {
+class BaseQueryLoading<I> extends BaseQueryState<I> {
   @override
   List<Object?> get props => [];
 }
 
-class BaseQuerySuccessState<T extends SearchResultInterface> extends BaseQueryState<T> {
+class BaseQuerySuccessState<I> extends BaseQueryState<I> {
   final bool hasMore;
-  final T result;
+  final SearchResultInterface<I> result;
 
   BaseQuerySuccessState({required this.result, required this.hasMore});
 
@@ -22,7 +22,7 @@ class BaseQuerySuccessState<T extends SearchResultInterface> extends BaseQuerySt
   List<Object?> get props => [result];
 }
 
-class BaseQueryErrorState<T extends SearchResultInterface> extends BaseQueryState<T> {
+class BaseQueryErrorState<I> extends BaseQueryState<I> {
   final Failure failure;
 
   BaseQueryErrorState({required this.failure});
