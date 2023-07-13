@@ -1,11 +1,13 @@
 import 'package:fluttaku/anime/data/models/anime_search_result_model.dart';
 import 'package:fluttaku/anime/domain/entities/anime_preview_entity.dart';
+import 'package:fluttaku/core/interfaces/search_result_interface.dart';
 import 'package:fluttaku/core/presentation/base_query_cubit/base_query_cubit.dart';
+import 'package:fluttaku/core/use_cases/use_case.dart';
 import 'package:fluttaku/core/utils/anime_query_params.dart';
 
-class QueryCubit extends BaseQueryCubit<AnimePreviewEntity> {
+abstract class AnimesQueryCubit<U extends UseCase<SearchResultInterface<AnimePreviewEntity>, QueryParams>> extends BaseQueryCubit<U, AnimePreviewEntity> {
 
-  QueryCubit({
+  AnimesQueryCubit({
     required super.useCase,
     required super.pageSize
   });
