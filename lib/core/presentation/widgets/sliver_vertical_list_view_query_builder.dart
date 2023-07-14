@@ -20,6 +20,7 @@ class SliverVerticalListViewQueryBuilder<
     emptyBuilder: (context) => const SliverToBoxAdapter(child: QueryBuilder.defaultNoItemFound,),
     loadingBuilder: (context) => const SliverToBoxAdapter(child: QueryBuilder.defaultLoading,),
     errorBuilder: (context, failure) => SliverToBoxAdapter(child: QueryBuilder.defaultFailure(failure.message),),
+    noInputBuilder: (context) => const SliverToBoxAdapter(child: QueryBuilder.defaultWaitingForInput,),
     builder: (context, state) {
       return SliverList(
         delegate: SliverChildBuilderDelegate(
