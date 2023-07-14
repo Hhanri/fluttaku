@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:fluttaku/anime/data/models/anime_episode_info_model.dart';
 import 'package:fluttaku/anime/data/models/anime_preview_model.dart';
 import 'package:fluttaku/anime/data/models/anime_title_model.dart';
@@ -35,7 +37,7 @@ class AnimeInfoModel extends AnimeInfoEntity {
       title: AnimeTitleModel.formJson(json[AnimeDTOConstants.title]),
       coverImage: json[AnimeDTOConstants.image],
       bannerImage: json[AnimeDTOConstants.cover],
-      color: json[AnimeDTOConstants.color],
+      color: Color(int.parse((json[AnimeDTOConstants.color] as String? ?? "FFFFFF").substring(1), radix: 16)),
       description: json[AnimeDTOConstants.description],
       status: parseAiringStatus(json[AnimeDTOConstants.status]) ,
       releaseYear: json[AnimeDTOConstants.releaseDate],
