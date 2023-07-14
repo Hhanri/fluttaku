@@ -35,7 +35,10 @@ class SliverGridViewQueryBuilder<
           },
           childCount: state.result.items.length
         ),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: 0.8 / mediaQuery.textScaleFactor)
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 0.8 / mediaQuery.textScaleFactor
+        )
       );
     }
   );
