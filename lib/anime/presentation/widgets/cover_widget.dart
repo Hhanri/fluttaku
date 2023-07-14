@@ -53,11 +53,7 @@ class CoverWidget extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
               child: Text(
                 "${((rating ?? 0) / 10)} ★",
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700
-                ),
+                style: MyTextStyle.ratingStyle,
               ),
             ),
           )
