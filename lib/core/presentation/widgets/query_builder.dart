@@ -1,7 +1,6 @@
 import 'package:fluttaku/core/error/failure.dart';
 import 'package:fluttaku/core/interfaces/search_result_interface.dart';
 import 'package:fluttaku/core/presentation/base_query_cubit/base_query_cubit.dart';
-import 'package:fluttaku/core/service_locator.dart';
 import 'package:fluttaku/core/use_cases/use_case.dart';
 import 'package:fluttaku/core/utils/anime_query_params.dart';
 import 'package:flutter/material.dart';
@@ -48,38 +47,35 @@ class _QueryBuilderState<
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return BlocProvider<C>(
-      create: (context) => sl.get<C>(),
-      child: BlocBuilder<C, BaseQueryState<I>>(
-        builder: (context, state) {
+    return BlocBuilder<C, BaseQueryState<I>>(
+      builder: (context, state) {
 
-          if (state is BaseQueryErrorState<I>) {
+        if (state is BaseQueryErrorState<I>) {
 
-            return widget.errorBuilder?.call(context, state.failure)
-              ?? QueryBuilder.defaultFailure(state.failure.message);
+          return widget.errorBuilder?.call(context, state.failure)
+            ?? QueryBuilder.defaultFailure(state.failure.message);
 
-          } else if (state is BaseQueryNoInputState) {
+        } else if (state is BaseQueryNoInputState) {
 
-            return widget.noInputBuilder?.call(context)
+          return widget.noInputBuilder?.call(context)
+            ?? QueryBuilder.defaultNoItemFound;
+
+        } else if (state is BaseQuerySuccessState<I>) {
+
+          if (state.result.items.isEmpty) {
+            return widget.emptyBuilder?.call(context)
               ?? QueryBuilder.defaultNoItemFound;
-
-          } else if (state is BaseQuerySuccessState<I>) {
-
-            if (state.result.items.isEmpty) {
-              return widget.emptyBuilder?.call(context)
-                ?? QueryBuilder.defaultNoItemFound;
-            }
-
-            return widget.builder(context, state);
-
-          } else {
-
-            return widget.loadingBuilder?.call(context)
-              ?? QueryBuilder.defaultLoading;
-
           }
+
+          return widget.builder(context, state);
+
+        } else {
+
+          return widget.loadingBuilder?.call(context)
+            ?? QueryBuilder.defaultLoading;
+
         }
-      ),
+      }
     );
   }
 
