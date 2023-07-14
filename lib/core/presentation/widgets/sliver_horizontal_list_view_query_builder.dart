@@ -19,6 +19,7 @@ class SliverHorizontalListViewQueryBuilder<
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
     return BlocProvider<C>(
       create: (context) => sl.get<C>(),
       child: SliverToBoxAdapter(
@@ -30,7 +31,7 @@ class SliverHorizontalListViewQueryBuilder<
               style: MyTextStyle.sectionTitleStyle,
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height*0.3,
+              height: mediaQuery.size.height*0.3 * mediaQuery.textScaleFactor,
               child: ListViewQueryBuilder<C, U, I>(
                 scrollDirection: Axis.horizontal,
                 itemBuilder: itemBuilder,

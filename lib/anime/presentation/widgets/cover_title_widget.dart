@@ -9,13 +9,15 @@ class CoverTitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width*0.3,
+    final mediaQuery = MediaQuery.of(context);
+    return Container(
+      margin: MyTheme.defaultPadding,
+      height: mediaQuery.size.height*0.3 * mediaQuery.textScaleFactor,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
-            flex: 3,
+            flex: 4,
             child: CoverWidget(
               imageUrl: animePreview.coverImage,
               rating: animePreview.rating,
