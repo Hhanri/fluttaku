@@ -1,6 +1,6 @@
 import 'package:fluttaku/core/interfaces/search_result_interface.dart';
 import 'package:fluttaku/core/presentation/base_query_cubit/base_search_query_cubit.dart';
-import 'package:fluttaku/core/presentation/widgets/list_view_query_builder.dart';
+import 'package:fluttaku/core/presentation/widgets/sliver_grid_view_query_builder.dart';
 import 'package:fluttaku/core/service_locator.dart';
 import 'package:fluttaku/core/use_cases/use_case.dart';
 import 'package:fluttaku/core/utils/anime_query_params.dart';
@@ -17,18 +17,20 @@ class SearchScreenBuilder<
 
   Widget searchBar(BuildContext context) {
 
-    return Row(
-      children: [
-        Expanded(
-          child: TextField(
-            controller: context.read<C>().textController,
+    return SliverToBoxAdapter(
+      child: Row(
+        children: [
+          Expanded(
+            child: TextField(
+              controller: context.read<C>().textController,
+            ),
           ),
-        ),
-        IconButton(
-          onPressed: context.read<C>().search,
-          icon: const Icon(Icons.search)
-        )
-      ],
+          IconButton(
+            onPressed: context.read<C>().search,
+            icon: const Icon(Icons.search)
+          )
+        ],
+      ),
     );
   }
 
@@ -36,19 +38,18 @@ class SearchScreenBuilder<
   Widget build(BuildContext context) {
     return BlocProvider<C>(
       create: (create) => sl.get<C>(),
-      child: Builder(
-        builder: (context) {
-          return Column(
-            children: [
-              searchBar(context),
-              Expanded(
-                child: ListViewQueryBuilder<C, U, I>(
-                  itemBuilder: itemBuilder
-                ),
-              )
-            ],
-          );
-        }
+      child: Scaffold(
+        body: Builder(
+          builder: (context) {
+            return CustomScrollView(
+              slivers: [
+                searchBar(context),
+                //SliverVerticalListViewQueryBuilder<C, U, I>(itemBuilder: itemBuilder)
+                SliverGridViewQueryBuilder<C, U, I>(itemBuilder: itemBuilder)
+              ],
+            );
+          }
+        ),
       ),
     );
   }
