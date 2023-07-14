@@ -47,6 +47,7 @@ class BannerPreviewWidget extends StatelessWidget {
           Row(
             children: [
               CoverWidget(
+                padding: MyTheme.defaultPadding,
                 imageUrl: animePreview.coverImage,
                 rating: animePreview.rating,
                 isAiring: animePreview.isAiring
