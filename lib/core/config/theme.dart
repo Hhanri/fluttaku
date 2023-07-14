@@ -26,7 +26,7 @@ class MyTextStyle {
   MyTextStyle._();
 
   static const titleStyle = TextStyle(
-    fontSize: 16
+    fontSize: 14
   );
 
   static const titleBoldStyle = TextStyle(
