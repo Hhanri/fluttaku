@@ -1,69 +1,72 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fluttaku/core/config/theme.dart';
+import 'package:fluttaku/core/presentation/widgets/movie_aspect_ratio.dart';
 import 'package:flutter/material.dart';
 
 class CoverWidget extends StatelessWidget {
   final String imageUrl;
   final int? rating;
   final bool isAiring;
-  final double? height;
   final EdgeInsets? padding;
   const CoverWidget({
     Key? key,
     required this.imageUrl,
     required this.rating,
     required this.isAiring,
-    this.height,
     this.padding
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height,
-      clipBehavior: Clip.hardEdge,
-      decoration: BoxDecoration(
-        borderRadius: MyTheme.defaultBorderRadius,
-        boxShadow: MyTheme.boxShadow
-      ),
-      margin: padding,
-      child: Stack(
-        fit: StackFit.loose,
-        children: [
-          CachedNetworkImage(
-            imageUrl: imageUrl,
-            fit: BoxFit.fitHeight,
-          ),
-          if (isAiring) Positioned(
-            bottom: 0,
-            left: 0,
-            child: CustomPaint(
-              painter: _AiringIndicator(
-                bigRadius: 10,
-                smallRadius: 8
-              ),
+
+    return CachedNetworkImage(
+      imageUrl: imageUrl,
+      imageBuilder: (context, image) {
+        return MovieAspectRatio(
+          child: Container(
+            clipBehavior: Clip.hardEdge,
+            decoration: BoxDecoration(
+              borderRadius: MyTheme.defaultBorderRadius,
+              boxShadow: MyTheme.boxShadow,
+              image: DecorationImage(image: image, fit: BoxFit.cover)
             ),
-          ),
-          Positioned(
-            bottom: 0,
-            right: 0,
-            //alignment: Alignment.bottomRight,
-            child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.pinkAccent,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(MyTheme.radiusValue)
+            margin: padding,
+            child: Stack(
+              fit: StackFit.loose,
+              children: [
+                if (isAiring) Positioned(
+                  bottom: 0,
+                  left: 0,
+                  child: CustomPaint(
+                    painter: _AiringIndicator(
+                      bigRadius: 10,
+                      smallRadius: 8
+                    ),
+                  ),
+                ),
+                Positioned(
+                  bottom: 0,
+                  right: 0,
+                  //alignment: Alignment.bottomRight,
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.pinkAccent,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(MyTheme.radiusValue)
+                      )
+                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                    child: Text(
+                      "${((rating ?? 0) / 10)} ★",
+                      style: MyTextStyle.ratingStyle,
+                    ),
+                  ),
                 )
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-              child: Text(
-                "${((rating ?? 0) / 10)} ★",
-                style: MyTextStyle.ratingStyle,
-              ),
+              ],
             ),
-          )
-        ],
-      ),
+          ),
+        );
+      },
     );
   }
 }
