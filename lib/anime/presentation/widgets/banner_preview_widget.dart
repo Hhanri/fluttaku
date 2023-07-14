@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fluttaku/anime/domain/entities/anime_preview_entity.dart';
 import 'package:fluttaku/anime/presentation/widgets/cover_widget.dart';
 import 'package:fluttaku/core/config/theme.dart';
+import 'package:fluttaku/core/utils/media_query.dart';
 import 'package:flutter/material.dart';
 
 class BannerPreviewWidget extends StatelessWidget {
@@ -14,11 +15,9 @@ class BannerPreviewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    const double height = 150;
-
     return Container(
       margin: MyTheme.defaultPadding,
-      height: height,
+      height: MediaQueryHelper.height(context, 0.25),
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
         color: Colors.white,

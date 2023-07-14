@@ -1,6 +1,7 @@
 import 'package:fluttaku/anime/domain/entities/anime_preview_entity.dart';
 import 'package:fluttaku/anime/presentation/widgets/cover_widget.dart';
 import 'package:fluttaku/core/config/theme.dart';
+import 'package:fluttaku/core/utils/media_query.dart';
 import 'package:flutter/material.dart';
 
 class CoverTitleWidget extends StatelessWidget {
@@ -9,10 +10,9 @@ class CoverTitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context);
     return Container(
       margin: MyTheme.defaultPadding,
-      height: mediaQuery.size.height*0.3 * mediaQuery.textScaleFactor,
+      width: MediaQueryHelper.width(context, 0.3),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

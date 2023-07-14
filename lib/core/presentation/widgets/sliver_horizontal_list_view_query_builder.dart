@@ -5,6 +5,7 @@ import 'package:fluttaku/core/presentation/widgets/list_view_query_builder.dart'
 import 'package:fluttaku/core/service_locator.dart';
 import 'package:fluttaku/core/use_cases/use_case.dart';
 import 'package:fluttaku/core/utils/anime_query_params.dart';
+import 'package:fluttaku/core/utils/media_query.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,7 +20,6 @@ class SliverHorizontalListViewQueryBuilder<
 
   @override
   Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context);
     return BlocProvider<C>(
       create: (context) => sl.get<C>(),
       child: SliverToBoxAdapter(
@@ -31,7 +31,7 @@ class SliverHorizontalListViewQueryBuilder<
               style: MyTextStyle.sectionTitleStyle,
             ),
             SizedBox(
-              height: mediaQuery.size.height*0.3 * mediaQuery.textScaleFactor,
+              height: MediaQueryHelper.height(context, 0.3),
               child: ListViewQueryBuilder<C, U, I>(
                 scrollDirection: Axis.horizontal,
                 itemBuilder: itemBuilder,
