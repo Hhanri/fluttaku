@@ -10,6 +10,7 @@ abstract class AnimePreviewEntity {
   final String type;
   final int? rating;
   final List<String> genres;
+  final int totalEpisodes;
 
   AnimePreviewEntity({
     required this.id,
@@ -20,6 +21,9 @@ abstract class AnimePreviewEntity {
     required this.type,
     required this.rating,
     required this.genres,
+    required this.totalEpisodes,
   });
+
+  bool get isAiring => status == AiringStatus.ongoing;
 }
 
