@@ -1,3 +1,4 @@
+import 'package:fluttaku/core/config/theme.dart';
 import 'package:fluttaku/core/interfaces/search_result_interface.dart';
 import 'package:fluttaku/core/presentation/base_query_cubit/base_query_cubit.dart';
 import 'package:fluttaku/core/presentation/widgets/list_view_query_builder.dart';
@@ -26,10 +27,10 @@ class SliverHorizontalListViewQueryBuilder<
           children: [
             Text(
               title,
-              style: Theme.of(context).textTheme.titleLarge,
+              style: MyTextStyle.sectionTitleStyle,
             ),
             SizedBox(
-              height: 200,
+              height: MediaQuery.of(context).size.height*0.3,
               child: ListViewQueryBuilder<C, U, I>(
                 scrollDirection: Axis.horizontal,
                 itemBuilder: itemBuilder,

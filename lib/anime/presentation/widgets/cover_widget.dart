@@ -6,16 +6,19 @@ class CoverWidget extends StatelessWidget {
   final String imageUrl;
   final int? rating;
   final bool isAiring;
+  final double? height;
   const CoverWidget({
     Key? key,
     required this.imageUrl,
     required this.rating,
-    required this.isAiring
+    required this.isAiring,
+    this.height
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: height,
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
         borderRadius: MyTheme.defaultBorderRadius,
