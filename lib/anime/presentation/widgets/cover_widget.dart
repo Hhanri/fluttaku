@@ -7,12 +7,14 @@ class CoverWidget extends StatelessWidget {
   final int? rating;
   final bool isAiring;
   final double? height;
+  final EdgeInsets? padding;
   const CoverWidget({
     Key? key,
     required this.imageUrl,
     required this.rating,
     required this.isAiring,
-    this.height
+    this.height,
+    this.padding
   }) : super(key: key);
 
   @override
@@ -24,7 +26,7 @@ class CoverWidget extends StatelessWidget {
         borderRadius: MyTheme.defaultBorderRadius,
         boxShadow: MyTheme.boxShadow
       ),
-      margin: MyTheme.defaultPadding,
+      margin: padding,
       child: Stack(
         fit: StackFit.loose,
         children: [
