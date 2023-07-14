@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:fluttaku/core/config/theme.dart';
 import 'package:flutter/material.dart';
 
 class CoverWidget extends StatelessWidget {
@@ -17,16 +18,10 @@ class CoverWidget extends StatelessWidget {
     return Container(
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.black26,
-            spreadRadius: 0.05,
-            blurRadius: 8
-          )
-        ]
+        borderRadius: MyTheme.defaultBorderRadius,
+        boxShadow: MyTheme.boxShadow
       ),
-      margin: const EdgeInsets.all(12),
+      margin: MyTheme.defaultPadding,
       child: Stack(
         fit: StackFit.loose,
         children: [
@@ -52,7 +47,7 @@ class CoverWidget extends StatelessWidget {
               decoration: const BoxDecoration(
                 color: Colors.pinkAccent,
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(12)
+                  topLeft: Radius.circular(MyTheme.radiusValue)
                 )
               ),
               padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
