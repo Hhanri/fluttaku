@@ -1,8 +1,9 @@
 import 'package:fluttaku/anime/data/models/anime_episode_info_model.dart';
-import 'package:fluttaku/anime/data/models/anime_preview_entity.dart';
-import 'package:fluttaku/anime/data/models/anime_title_entity.dart';
+import 'package:fluttaku/anime/data/models/anime_preview_model.dart';
+import 'package:fluttaku/anime/data/models/anime_title_model.dart';
 import 'package:fluttaku/anime/domain/entities/anime_info_entity.dart';
 import 'package:fluttaku/core/constants/anime_dto_constants.dart';
+import 'package:fluttaku/core/interfaces/airing_status.dart';
 
 class AnimeInfoModel extends AnimeInfoEntity {
   AnimeInfoModel({
@@ -36,7 +37,7 @@ class AnimeInfoModel extends AnimeInfoEntity {
       bannerImage: json[AnimeDTOConstants.cover],
       color: json[AnimeDTOConstants.color],
       description: json[AnimeDTOConstants.description],
-      status: json[AnimeDTOConstants.status],
+      status: parseAiringStatus(json[AnimeDTOConstants.status]) ,
       releaseYear: json[AnimeDTOConstants.releaseDate],
       startDate: _Date.fromJson(json[AnimeDTOConstants.startDate]).toDateTime(),
       endDate: _Date.fromJson(json[AnimeDTOConstants.endDate]).toDateTime(),

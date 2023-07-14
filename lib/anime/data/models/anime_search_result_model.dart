@@ -1,4 +1,4 @@
-import 'package:fluttaku/anime/data/models/anime_preview_entity.dart';
+import 'package:fluttaku/anime/data/models/anime_preview_model.dart';
 import 'package:fluttaku/anime/domain/entities/anime_preview_entity.dart';
 import 'package:fluttaku/anime/domain/entities/anime_search_result_entity.dart';
 import 'package:fluttaku/core/constants/anime_dto_constants.dart';

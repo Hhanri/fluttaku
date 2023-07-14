@@ -1,6 +1,7 @@
-import 'package:fluttaku/anime/data/models/anime_title_entity.dart';
+import 'package:fluttaku/anime/data/models/anime_title_model.dart';
 import 'package:fluttaku/anime/domain/entities/anime_preview_entity.dart';
 import 'package:fluttaku/core/constants/anime_dto_constants.dart';
+import 'package:fluttaku/core/interfaces/airing_status.dart';
 
 class AnimePreviewModel extends AnimePreviewEntity {
   AnimePreviewModel({
@@ -17,7 +18,7 @@ class AnimePreviewModel extends AnimePreviewEntity {
     return AnimePreviewModel(
       id: json[AnimeDTOConstants.id].toString(),
       title: AnimeTitleModel.formJson(json[AnimeDTOConstants.title]),
-      status: json[AnimeDTOConstants.status],
+      status: parseAiringStatus(json[AnimeDTOConstants.status]),
       coverImage: json[AnimeDTOConstants.image],
       type: json[AnimeDTOConstants.type],
       rating: json[AnimeDTOConstants.rating],

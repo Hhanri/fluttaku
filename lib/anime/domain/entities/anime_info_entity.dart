@@ -1,6 +1,7 @@
 import 'package:fluttaku/anime/domain/entities/anime_episode_info_entity.dart';
 import 'package:fluttaku/anime/domain/entities/anime_preview_entity.dart';
 import 'package:fluttaku/anime/domain/entities/anime_title_entity.dart';
+import 'package:fluttaku/core/interfaces/airing_status.dart';
 
 abstract class AnimeInfoEntity {
   final String id;
@@ -9,7 +10,7 @@ abstract class AnimeInfoEntity {
   final String bannerImage;
   final String color;
   final String description;
-  final String status;
+  final AiringStatus status;
   final int releaseYear;
   final DateTime startDate;
   final DateTime endDate;

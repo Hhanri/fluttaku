@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:fluttaku/anime/data/models/anime_episode_links_model.dart';
-import 'package:fluttaku/anime/data/models/anime_info_entity.dart';
+import 'package:fluttaku/anime/data/models/anime_info_model.dart';
 import 'package:fluttaku/anime/data/models/anime_search_result_model.dart';
 import 'package:fluttaku/anime/data/data_source/anime_data_source_interface.dart';
 import 'package:fluttaku/anime/domain/entities/anime_episode_links_entity.dart';

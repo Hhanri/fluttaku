@@ -1,9 +1,10 @@
 import 'package:fluttaku/anime/domain/entities/anime_title_entity.dart';
+import 'package:fluttaku/core/interfaces/airing_status.dart';
 
 abstract class AnimePreviewEntity {
   final String id;
   final AnimeTitleEntity title;
-  final String status;
+  final AiringStatus status;
   final String coverImage;
   final String type;
   final int? rating;
@@ -19,3 +20,4 @@ abstract class AnimePreviewEntity {
     required this.genres
   });
 }
+
