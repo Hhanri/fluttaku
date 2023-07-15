@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:fluttaku/core/error/failure.dart';
 import 'package:fluttaku/core/interfaces/search_result_interface.dart';
+import 'package:fluttaku/core/presentation/base_query_cubit/base_search_query_cubit.dart';
 import 'package:fluttaku/core/use_cases/use_case.dart';
 import 'package:fluttaku/core/utils/anime_query_params.dart';
 import 'package:flutter/foundation.dart';

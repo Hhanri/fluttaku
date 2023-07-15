@@ -30,7 +30,8 @@ class QueryBuilder<
   @override
   State<QueryBuilder<C, U, I>> createState() => _QueryBuilderState<C, U, I>();
 
-  static const Widget defaultWaitingForInput = Center(child: Text("Waiting for Input"),);
+  //static const Widget defaultWaitingForInput = Center(child: Text("Waiting for Input"),);
+  static const Widget defaultWaitingForInput = SizedBox.shrink();
   static const Widget defaultNoItemFound = Center(child: Text("No item found"),);
   static const Widget defaultLoading = Center(child: CircularProgressIndicator());
   static Widget defaultFailure(String text) {

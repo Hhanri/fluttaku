@@ -13,6 +13,18 @@ class AnimeSearchQueryCubit extends BaseSearchQueryCubit<SearchAnimeUseCase, Ani
   });
 
   @override
+  void changeDisplayMode(SearchResultDisplayMode displayMode) {
+    super.displayMode = displayMode;
+
+    if (state is BaseQueryNoInputState) {
+      emit(BaseQueryNoInputState(displayMode: displayMode));
+      return;
+    }
+
+    emitNotLoading();
+  }
+
+  @override
   void fetchMore() async {
     if (!hasMore || isFetching) return;
 
@@ -34,13 +46,7 @@ class AnimeSearchQueryCubit extends BaseSearchQueryCubit<SearchAnimeUseCase, Ani
         hasMore = success.hasNextPage;
         items = [...items, ...success.items];
 
-        final searchResult = AnimeSearchResultModel(
-          hasNextPage: hasMore,
-          currentPage: currentPage,
-          items: items
-        );
-
-        emit(BaseQuerySuccessState(result: searchResult, hasMore: hasMore));
+        emitNotLoading();
       }
     );
   }
@@ -70,17 +76,26 @@ class AnimeSearchQueryCubit extends BaseSearchQueryCubit<SearchAnimeUseCase, Ani
         hasMore = success.hasNextPage;
         items = success.items;
 
-        final searchResult = AnimeSearchResultModel(
-          hasNextPage: hasMore,
-          currentPage: currentPage,
-          items: items
-        );
-
-        emit(BaseQuerySuccessState(result: searchResult, hasMore: hasMore));
+        emitNotLoading();
       }
     );
 
-
     fetchMore();
+  }
+
+  void emitNotLoading() {
+    final searchResult = AnimeSearchResultModel(
+      hasNextPage: hasMore,
+      currentPage: currentPage,
+      items: items,
+    );
+
+    emit(
+      BaseQuerySuccessState(
+        result: searchResult,
+        hasMore: hasMore,
+        displayMode: displayMode
+      )
+    );
   }
 }

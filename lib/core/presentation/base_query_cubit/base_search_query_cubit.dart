@@ -8,6 +8,7 @@ abstract class BaseSearchQueryCubit<U extends UseCase<SearchResultInterface<I>, 
 
   final TextEditingController textController = TextEditingController();
   String query = "";
+  SearchResultDisplayMode displayMode = SearchResultDisplayMode.grid;
 
   BaseSearchQueryCubit({required super.useCase, required super.pageSize}) : super(initialState: const BaseQueryNoInputState());
 
@@ -16,9 +17,16 @@ abstract class BaseSearchQueryCubit<U extends UseCase<SearchResultInterface<I>, 
 
   void search();
 
+  void changeDisplayMode(SearchResultDisplayMode displayMode);
+
   @override
   Future<void> close() async {
     textController.dispose();
     super.close();
   }
+}
+
+enum SearchResultDisplayMode {
+  grid,
+  list
 }
