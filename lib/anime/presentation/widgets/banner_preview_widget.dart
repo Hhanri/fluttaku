@@ -38,7 +38,7 @@ class BannerPreviewWidget extends StatelessWidget {
             },
             blendMode: BlendMode.srcATop,
             child: CachedNetworkImage(
-              imageUrl: animePreview.bannerImage,
+              imageUrl: animePreview.bannerImage ?? animePreview.coverImage,
               fit: BoxFit.cover,
             ),
           ),

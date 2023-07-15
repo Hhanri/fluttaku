@@ -6,7 +6,7 @@ abstract class AnimePreviewEntity {
   final AnimeTitleEntity title;
   final AiringStatus status;
   final String coverImage;
-  final String bannerImage;
+  final String? bannerImage;
   final String type;
   final int? rating;
   final List<String> genres;
