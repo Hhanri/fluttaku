@@ -16,10 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       routerConfig: sl.get<MyGoRouter>().router,
       title: 'Fluttaku',
-      theme: ThemeData(
-        useMaterial3: true,
-        colorSchemeSeed: MyColors.primaryColor
-      ),
+      theme: MyTheme.data,
     );
   }
 }

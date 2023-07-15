@@ -21,7 +21,7 @@ abstract class AnimesQueryCubit<U extends UseCase<AnimeSearchResultEntity, Query
 
     result.fold(
       (error) {
-        emit(BaseQueryErrorState(failure: error));
+        //emit(BaseQueryErrorState(failure: error));
       },
       (success) {
         currentPage++;

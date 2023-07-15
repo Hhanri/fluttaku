@@ -27,7 +27,7 @@ class AnimeSearchQueryCubit extends BaseSearchQueryCubit<SearchAnimeUseCase, Ani
 
     result.fold(
       (error) {
-        emit(BaseQueryErrorState(failure: error));
+        //emit(BaseQueryErrorState(failure: error));
       },
       (success) {
         currentPage++;

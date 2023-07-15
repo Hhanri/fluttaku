@@ -5,6 +5,12 @@ class MyTheme {
 
   MyTheme._();
 
+  static final data = ThemeData(
+    scaffoldBackgroundColor: MyColors.backgroundColor,
+    useMaterial3: true,
+    colorSchemeSeed: MyColors.primaryColor
+  );
+
   static const boxShadow = [
     BoxShadow(
       color: Colors.black26,
@@ -32,6 +38,8 @@ class MyColors {
   MyColors._();
 
   static const primaryColor = Colors.pinkAccent;
+  static final backgroundColor = Colors.grey.shade100;
+
 }
 
 class MyTextStyle {
