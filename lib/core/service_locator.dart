@@ -8,12 +8,16 @@ import 'package:fluttaku/anime/domain/use_cases/search_anime_use_case.dart';
 import 'package:fluttaku/anime/presentation/cubits/query_cubit/popular_animes_query_cubit.dart';
 import 'package:fluttaku/anime/presentation/cubits/query_cubit/trending_animes_query_cubit.dart';
 import 'package:fluttaku/anime/presentation/cubits/search_query_cubit/anime_search_query_cubit.dart';
+import 'package:fluttaku/core/config/router.dart';
 import 'package:fluttaku/core/constants/default_page_size.dart';
 import 'package:get_it/get_it.dart';
 
 final GetIt sl = GetIt.asNewInstance();
 
 void setupSL() {
+  //router
+  sl.registerLazySingleton<MyGoRouter>(() => MyGoRouter());
+
   //setup datasource
   sl.registerLazySingleton<AnimeDataSourceInterface>(() => AnimeRemoteDataSource());
 
