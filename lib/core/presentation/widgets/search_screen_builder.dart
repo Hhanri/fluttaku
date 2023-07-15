@@ -12,7 +12,7 @@ class SearchScreenBuilder<
   U extends UseCase<SearchResultInterface<I>, SearchQueryParams>,
   I
 > extends StatelessWidget {
-  final TextFormField Function(TextEditingController controller) textFieldBuilder;
+  final Widget Function(TextEditingController controller) textFieldBuilder;
   final Widget Function(BuildContext context, I item) itemBuilder;
   const SearchScreenBuilder({Key? key, required this.itemBuilder, required this.textFieldBuilder}) : super(key: key);
 

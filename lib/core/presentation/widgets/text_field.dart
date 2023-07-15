@@ -2,33 +2,37 @@ import 'package:fluttaku/core/config/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class MyTextFormField extends TextFormField {
+class MyTextFormField extends Padding {
   final TextFormParameters parameters;
+
   MyTextFormField({
     super.key,
-    required this.parameters,
-    super.controller,
+    required this.parameters
   }) : super(
-    maxLines: parameters.maxLines,
-    onTap: parameters.onTap,
-    inputFormatters: parameters.inputFormatters,
-    textCapitalization: parameters.textCapitalization,
-    validator: parameters.validator,
-    readOnly: parameters.readOnly,
-    keyboardType: parameters.keyboardType,
-    decoration: InputDecoration(
-      labelText: parameters.label,
-      errorText: parameters.errorText,
-      border: OutlineInputBorder(
-        borderRadius: MyTheme.bigBorderRadius,
-        borderSide: const BorderSide(color: MyColors.primaryColor, width: 1)
+    padding: MyTheme.defaultPadding,
+    child: TextFormField(
+      controller: parameters.controller,
+      maxLines: parameters.maxLines,
+      onTap: parameters.onTap,
+      inputFormatters: parameters.inputFormatters,
+      textCapitalization: parameters.textCapitalization,
+      validator: parameters.validator,
+      readOnly: parameters.readOnly,
+      keyboardType: parameters.keyboardType,
+      decoration: InputDecoration(
+        labelText: parameters.label,
+        errorText: parameters.errorText,
+        border: OutlineInputBorder(
+          borderRadius: MyTheme.bigBorderRadius,
+          borderSide: const BorderSide(color: MyColors.primaryColor, width: 1)
+        )
       )
     )
   );
-
 }
 
 abstract class TextFormParameters {
+  final TextEditingController? controller;
   final String label;
   final String? errorText;
   final int? maxLines;
@@ -39,6 +43,7 @@ abstract class TextFormParameters {
   final VoidCallback? onTap;
   final bool readOnly;
   TextFormParameters({
+    this.controller,
     required this.label,
     this.errorText,
     this.maxLines = 1,
@@ -53,9 +58,9 @@ abstract class TextFormParameters {
 
 class SearchParameters extends TextFormParameters {
   SearchParameters({
+    required super.controller,
     required super.label,
     super.errorText,
-
   }) : super(
     readOnly: false,
     keyboardType: TextInputType.text,
