@@ -15,10 +15,19 @@ class MyTheme {
 
   static const defaultPadding = EdgeInsets.all(12);
 
-  static final defaultBorderRadius = BorderRadius.circular(radiusValue);
+  static final defaultBorderRadius = BorderRadius.circular(defaultRadiusValue);
 
-  static const double radiusValue = 12;
+  static const double defaultRadiusValue = 12;
 
+  static final bigBorderRadius = BorderRadius.circular(36);
+
+}
+
+class MyColors {
+
+  MyColors._();
+
+  static const primaryColor = Colors.pinkAccent;
 }
 
 class MyTextStyle {

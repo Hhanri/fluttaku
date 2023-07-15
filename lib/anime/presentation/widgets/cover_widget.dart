@@ -50,9 +50,9 @@ class CoverWidget extends StatelessWidget {
                   //alignment: Alignment.bottomRight,
                   child: Container(
                     decoration: const BoxDecoration(
-                      color: Colors.pinkAccent,
+                      color: MyColors.primaryColor,
                       borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(MyTheme.radiusValue)
+                        topLeft: Radius.circular(MyTheme.defaultRadiusValue)
                       )
                     ),
                     padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
