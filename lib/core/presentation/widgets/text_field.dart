@@ -19,7 +19,11 @@ class MyTextFormField extends Padding {
       validator: parameters.validator,
       readOnly: parameters.readOnly,
       keyboardType: parameters.keyboardType,
+      enabled: parameters.enabled,
+      onFieldSubmitted: parameters.onFieldSubmitted,
+      autofocus: parameters.autofocus,
       decoration: InputDecoration(
+        suffixIcon: parameters.suffixIcon,
         labelText: parameters.label,
         errorText: parameters.errorText,
         border: OutlineInputBorder(
@@ -42,6 +46,10 @@ abstract class TextFormParameters {
   final TextCapitalization textCapitalization;
   final VoidCallback? onTap;
   final bool readOnly;
+  final bool enabled;
+  final Widget? suffixIcon;
+  final Function(String)? onFieldSubmitted;
+  final bool autofocus;
   TextFormParameters({
     this.controller,
     required this.label,
@@ -52,7 +60,11 @@ abstract class TextFormParameters {
     this.inputFormatters,
     this.textCapitalization = TextCapitalization.none,
     this.onTap,
-    this.readOnly = false
+    this.readOnly = false,
+    this.enabled = true,
+    this.suffixIcon,
+    this.onFieldSubmitted,
+    this.autofocus = false
   });
 }
 
@@ -60,6 +72,8 @@ class SearchParameters extends TextFormParameters {
   SearchParameters({
     required super.controller,
     required super.label,
+    required super.suffixIcon,
+    required super.onFieldSubmitted,
     super.errorText,
   }) : super(
     readOnly: false,
@@ -68,7 +82,8 @@ class SearchParameters extends TextFormParameters {
     onTap: null,
     maxLines: 1,
     validator: null,
-    inputFormatters: null
+    inputFormatters: null,
+    autofocus: true
   );
 }
 
@@ -76,8 +91,9 @@ class ButtonParameters extends TextFormParameters {
   ButtonParameters({
     required super.onTap,
     required super.label,
+    required super.suffixIcon,
   }) : super(
-    readOnly: false,
+    readOnly: true,
     keyboardType: TextInputType.text,
     textCapitalization: TextCapitalization.none,
     maxLines: 1,

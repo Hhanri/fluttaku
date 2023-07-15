@@ -12,24 +12,14 @@ class SearchScreenBuilder<
   U extends UseCase<SearchResultInterface<I>, SearchQueryParams>,
   I
 > extends StatelessWidget {
-  final Widget Function(TextEditingController controller) textFieldBuilder;
+  final Widget Function(TextEditingController controller, VoidCallback onSearch) textFieldBuilder;
   final Widget Function(BuildContext context, I item) itemBuilder;
   const SearchScreenBuilder({Key? key, required this.itemBuilder, required this.textFieldBuilder}) : super(key: key);
 
   Widget searchBar(BuildContext context) {
-
+    final cubit = context.read<C>();
     return SliverToBoxAdapter(
-      child: Row(
-        children: [
-          Expanded(
-            child: textFieldBuilder(context.read<C>().textController),
-          ),
-          IconButton(
-            onPressed: context.read<C>().search,
-            icon: const Icon(Icons.search)
-          )
-        ],
-      ),
+      child: textFieldBuilder(cubit.textController, cubit.search),
     );
   }
 
