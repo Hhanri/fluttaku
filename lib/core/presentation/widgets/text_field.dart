@@ -25,7 +25,7 @@ class MyTextFormField extends Padding {
       decoration: InputDecoration(
         contentPadding: MyTheme.smallPadding,
         suffixIcon: parameters.suffixIcon,
-        labelText: parameters.label,
+        hintText: parameters.label,
         errorText: parameters.errorText,
         border: OutlineInputBorder(
           borderRadius: MyTheme.bigBorderRadius,
