@@ -12,8 +12,9 @@ class SearchScreenBuilder<
   U extends UseCase<SearchResultInterface<I>, SearchQueryParams>,
   I
 > extends StatelessWidget {
+  final TextFormField Function(TextEditingController controller) textFieldBuilder;
   final Widget Function(BuildContext context, I item) itemBuilder;
-  const SearchScreenBuilder({Key? key, required this.itemBuilder}) : super(key: key);
+  const SearchScreenBuilder({Key? key, required this.itemBuilder, required this.textFieldBuilder}) : super(key: key);
 
   Widget searchBar(BuildContext context) {
 
@@ -21,9 +22,7 @@ class SearchScreenBuilder<
       child: Row(
         children: [
           Expanded(
-            child: TextField(
-              controller: context.read<C>().textController,
-            ),
+            child: textFieldBuilder(context.read<C>().textController),
           ),
           IconButton(
             onPressed: context.read<C>().search,
