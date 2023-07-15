@@ -9,7 +9,7 @@ abstract class AnimeInfoEntity {
   final String id;
   final AnimeTitleEntity title;
   final String coverImage;
-  final String bannerImage;
+  final String? bannerImage;
   final Color color;
   final String description;
   final AiringStatus status;
