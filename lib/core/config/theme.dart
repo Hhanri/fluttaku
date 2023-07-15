@@ -21,7 +21,7 @@ class MyTheme {
 
   static const defaultPadding = EdgeInsets.all(18);
   static const defaultHorizontalPadding = EdgeInsets.symmetric(horizontal: 18);
-  static const defaultAsymmetricPadding = EdgeInsets.only(left: 18, right: 18, bottom: 12);
+  static const defaultAsymmetricPadding = EdgeInsets.only(left: 18, right: 18, bottom: 18);
 
   static const smallPadding = EdgeInsets.all(12);
 
