@@ -19,7 +19,9 @@ class SearchScreenBuilder<
   Widget searchBar(BuildContext context) {
     final cubit = context.read<C>();
     return SliverToBoxAdapter(
-      child: textFieldBuilder(cubit.textController, cubit.search),
+      child: SafeArea(
+        child: textFieldBuilder(cubit.textController, cubit.search)
+      ),
     );
   }
 

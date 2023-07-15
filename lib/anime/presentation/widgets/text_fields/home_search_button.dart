@@ -10,7 +10,6 @@ class HomeSearchButton extends MyTextFormField {
         WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
           FocusManager.instance.primaryFocus?.unfocus();
         });
-        //FocusScope.of(MyGoRouter.context).focusedChild?.unfocus();
         GoRouter.of(MyGoRouter.context).pushNamed(MyGoRouter.searchRouteName);
       },
       label: "Search anime...",

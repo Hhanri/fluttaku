@@ -6,7 +6,7 @@ import 'package:fluttaku/core/presentation/widgets/sliver_horizontal_list_view_q
 
 class TrendingAnimesWidget extends SliverHorizontalListViewQueryBuilder<TrendingAnimesQueryCubit, FetchTrendingAnimesUseCase, AnimePreviewEntity> {
   TrendingAnimesWidget({super.key}) : super(
-    title: "Popular Animes",
+    title: "Trending Animes",
     itemBuilder: (context, item) {
       return CoverTitleWidget(animePreview: item);
     }

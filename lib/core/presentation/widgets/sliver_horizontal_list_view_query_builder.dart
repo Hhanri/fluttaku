@@ -26,13 +26,18 @@ class SliverHorizontalListViewQueryBuilder<
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              title,
-              style: MyTextStyle.sectionTitleStyle,
+            Padding(
+              padding: MyTheme.defaultPadding,
+              child: Text(
+                title,
+                style: MyTextStyle.sectionTitleStyle,
+              ),
             ),
             SizedBox(
               height: MediaQueryHelper.height(context, 0.3),
               child: ListViewQueryBuilder<C, U, I>(
+                clipBehavior: Clip.none,
+                padding: MyTheme.defaultHorizontalPadding,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: itemBuilder,
               ),

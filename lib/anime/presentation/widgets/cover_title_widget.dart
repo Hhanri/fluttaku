@@ -10,8 +10,7 @@ class CoverTitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: MyTheme.defaultPadding,
+    return SizedBox(
       width: MediaQueryHelper.width(context, 0.3),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

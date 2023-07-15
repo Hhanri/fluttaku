@@ -16,7 +16,7 @@ class BannerPreviewWidget extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Container(
-      margin: MyTheme.defaultPadding,
+      margin: MyTheme.defaultAsymmetricPadding,
       height: MediaQueryHelper.height(context, 0.25),
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(

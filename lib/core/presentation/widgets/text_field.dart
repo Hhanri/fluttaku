@@ -23,6 +23,7 @@ class MyTextFormField extends Padding {
       onFieldSubmitted: parameters.onFieldSubmitted,
       autofocus: parameters.autofocus,
       decoration: InputDecoration(
+        contentPadding: MyTheme.smallPadding,
         suffixIcon: parameters.suffixIcon,
         labelText: parameters.label,
         errorText: parameters.errorText,
