@@ -15,7 +15,12 @@ class SearchAnimeTextField extends MyTextFormField {
       label: "Search anime...",
       controller: controller,
       suffixIcon: IconButton(
-        onPressed: onSearch,
+        onPressed: (){
+          WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+            FocusManager.instance.primaryFocus?.unfocus();
+          });
+          onSearch();
+        },
         icon: const Icon(Icons.search)
       ),
       onFieldSubmitted: onFieldSubmitted
