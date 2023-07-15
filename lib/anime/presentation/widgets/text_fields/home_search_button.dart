@@ -12,7 +12,7 @@ class HomeSearchButton extends MyTextFormField {
         });
         GoRouter.of(MyGoRouter.context).pushNamed(MyGoRouter.searchRouteName);
       },
-      label: "Search anime...",
+      hintText: "Search anime...",
       suffixIcon: const Icon(Icons.search)
     )
   );

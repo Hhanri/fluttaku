@@ -12,7 +12,7 @@ class SearchAnimeTextField extends MyTextFormField {
     required this.onFieldSubmitted,
   }) : super(
     parameters: SearchParameters(
-      label: "Search anime...",
+      hintText: "Search anime...",
       controller: controller,
       suffixIcon: IconButton(
         onPressed: (){

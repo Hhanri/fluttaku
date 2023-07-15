@@ -25,7 +25,8 @@ class MyTextFormField extends Padding {
       decoration: InputDecoration(
         contentPadding: MyTheme.smallPadding,
         suffixIcon: parameters.suffixIcon,
-        hintText: parameters.label,
+        labelText: parameters.labelText,
+        hintText: parameters.hintText,
         errorText: parameters.errorText,
         border: OutlineInputBorder(
           borderRadius: MyTheme.bigBorderRadius,
@@ -38,7 +39,8 @@ class MyTextFormField extends Padding {
 
 abstract class TextFormParameters {
   final TextEditingController? controller;
-  final String label;
+  final String? labelText;
+  final String? hintText;
   final String? errorText;
   final int? maxLines;
   final TextInputType? keyboardType;
@@ -53,7 +55,8 @@ abstract class TextFormParameters {
   final bool autofocus;
   TextFormParameters({
     this.controller,
-    required this.label,
+    this.labelText,
+    this.hintText,
     this.errorText,
     this.maxLines = 1,
     this.validator,
@@ -72,7 +75,7 @@ abstract class TextFormParameters {
 class SearchParameters extends TextFormParameters {
   SearchParameters({
     required super.controller,
-    required super.label,
+    required super.hintText,
     required super.suffixIcon,
     required super.onFieldSubmitted,
     super.errorText,
@@ -91,7 +94,7 @@ class SearchParameters extends TextFormParameters {
 class ButtonParameters extends TextFormParameters {
   ButtonParameters({
     required super.onTap,
-    required super.label,
+    required super.hintText,
     required super.suffixIcon,
   }) : super(
     readOnly: true,
