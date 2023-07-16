@@ -56,6 +56,7 @@ class _CustomFlexibleSpaceBarState extends State<CustomFlexibleSpaceBar> {
           alignment: Alignment.bottomLeft,
           child: Container(
             height: kToolbarHeight,
+            width: double.maxFinite,
             color: Colors.white,
             padding: MyTheme.defaultPadding,
             child: DefaultTextStyle(
