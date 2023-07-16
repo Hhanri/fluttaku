@@ -14,6 +14,7 @@ class AnimePreviewModel extends AnimePreviewEntity {
     required super.rating,
     required super.genres,
     required super.totalEpisodes,
+    required super.currentEpisodesCount,
   });
 
   factory AnimePreviewModel.fromJson(Map<String, dynamic> json) {
@@ -26,7 +27,8 @@ class AnimePreviewModel extends AnimePreviewEntity {
       type: json[AnimeDTOConstants.type],
       rating: json[AnimeDTOConstants.rating],
       genres: List<String>.from(json[AnimeDTOConstants.genres] ?? []),
-      totalEpisodes: json[AnimeDTOConstants.totalEpisodes] ?? 0
+      totalEpisodes: json[AnimeDTOConstants.totalEpisodes],
+      currentEpisodesCount: json[AnimeDTOConstants.currentEpisodeCount]
     );
   }
 }
