@@ -23,6 +23,7 @@ class AnimeDTOConstants {
   static const String day = "day";
   static const String season = "season";
   static const String totalEpisodes = "totalEpisodes";
+  static const String currentEpisodeCount = "currentEpisodeCount";
   static const String currentEpisode = "currentEpisode";
   static const String duration = "duration";
   static const String studios = "studios";
