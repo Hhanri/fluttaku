@@ -25,7 +25,7 @@ class BannerPreviewWidget extends StatelessWidget {
         height: MediaQueryHelper.height(context, 0.25),
         clipBehavior: Clip.hardEdge,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: MyColors.foregroundColor,
           boxShadow: MyTheme.boxShadow,
           borderRadius: MyTheme.defaultBorderRadius
         ),

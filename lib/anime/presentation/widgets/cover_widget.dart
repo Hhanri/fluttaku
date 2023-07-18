@@ -57,7 +57,7 @@ class CoverWidget extends StatelessWidget {
                     ),
                     padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                     child: Text(
-                      "${((rating ?? 0) / 10)} ★",
+                      "${rating == null ? "??" : rating!/10} ★",
                       style: MyTextStyle.ratingStyle,
                     ),
                   ),
