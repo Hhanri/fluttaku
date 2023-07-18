@@ -43,6 +43,7 @@ class _CustomFlexibleSpaceBarState extends State<CustomFlexibleSpaceBar> {
 
   late final PageController _pageController;
   late final PageView pageView;
+  final animationDuration = const Duration(milliseconds: 500);
 
   @override
   void initState() {
@@ -98,9 +99,9 @@ class _CustomFlexibleSpaceBarState extends State<CustomFlexibleSpaceBar> {
 
         if (_pageController.hasClients) {
           if (constraints.maxHeight <= widget.maxDisplayHeight) {
-            _pageController.animateToPage(0, duration: const Duration(milliseconds: 50), curve: Curves.easeInOut);
+            _pageController.animateToPage(0, duration: animationDuration, curve: Curves.easeOutCirc);
           } else {
-            _pageController.animateToPage(1, duration: const Duration(milliseconds: 50), curve: Curves.easeInOut);
+            _pageController.animateToPage(1, duration: animationDuration, curve: Curves.easeOutCirc);
           }
         }
 
