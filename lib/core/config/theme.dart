@@ -10,7 +10,7 @@ class MyTheme {
     useMaterial3: true,
     colorSchemeSeed: MyColors.primaryColor,
     appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.white,
+      backgroundColor: MyColors.foregroundColor,
     ),
   );
 
@@ -43,6 +43,7 @@ class MyColors {
 
   static const primaryColor = Colors.pinkAccent;
   static final backgroundColor = Colors.grey.shade100;
+  static const foregroundColor = Colors.white;
 
   static const blackText = Colors.black87;
 
@@ -63,10 +64,17 @@ class MyTextStyle {
     color: MyColors.blackText
   );
 
+  static const primaryBoldText = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w800,
+    color: MyColors.primaryColor,
+    fontStyle: FontStyle.italic
+  );
+
   static const ratingStyle = TextStyle(
     color: Colors.white,
     fontSize: 14,
-    fontWeight: FontWeight.w700
+    fontWeight: FontWeight.w800
   );
 
   static const sectionTitleStyle = TextStyle(
@@ -77,7 +85,7 @@ class MyTextStyle {
 
   static const bodyStyle = TextStyle(
     fontSize: 14,
-      color: MyColors.blackText
+    color: MyColors.blackText
   );
 
   static const bodyBoldStyle = TextStyle(
