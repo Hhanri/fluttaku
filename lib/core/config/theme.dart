@@ -12,6 +12,11 @@ class MyTheme {
     appBarTheme: const AppBarTheme(
       backgroundColor: MyColors.foregroundColor,
     ),
+    navigationBarTheme: const NavigationBarThemeData(
+      backgroundColor: MyColors.foregroundColor,
+      surfaceTintColor: MyColors.foregroundColor,
+      labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected
+    )
   );
 
   static const boxShadow = [
@@ -28,6 +33,8 @@ class MyTheme {
 
   static const smallPadding = EdgeInsets.all(12);
   static const bigPadding = EdgeInsets.all(32);
+
+  static const tinyPadding = EdgeInsets.all(6);
 
   static final defaultBorderRadius = BorderRadius.circular(defaultRadiusValue);
 

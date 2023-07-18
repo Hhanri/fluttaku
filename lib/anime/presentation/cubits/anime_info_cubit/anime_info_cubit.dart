@@ -11,13 +11,31 @@ part 'anime_info_state.dart';
 class AnimeInfoCubit extends Cubit<AnimeInfoState> {
   final AnimePreviewEntity animePreview;
   final FetchAnimeInfoUseCase useCase;
-  AnimeInfoCubit({required this.animePreview, required this.useCase}) : super(AnimeInfoLoading(animePreview: animePreview));
+  AnimeInfoCubit({required this.animePreview, required this.useCase}) : super(
+    AnimeInfoLoading(
+      animePreview: animePreview,
+      navBarState: AnimeInfoNavBarState.details
+    )
+  );
+
+  AnimeInfoNavBarState navBarState = AnimeInfoNavBarState.details;
 
   void init() async {
     final res = await useCase.call(animePreview.id);
     res.fold(
-      (error) => emit(AnimeInfoError(animePreview: animePreview, failure: error)),
-      (success) => emit(AnimeInfoLoaded(animePreview: animePreview, animeInfo: success))
+      (error) => emit(AnimeInfoError(animePreview: animePreview, failure: error, navBarState: navBarState)),
+      (success) => emit(AnimeInfoLoaded(animePreview: animePreview, animeInfo: success, navBarState: navBarState))
     );
   }
+
+  void changeNavBarState({required newState}) {
+    navBarState = newState;
+    print(newState);
+    emit(state.changeNavBarState(navBarState: navBarState));
+  }
+}
+
+enum AnimeInfoNavBarState {
+  details,
+  watch
 }
