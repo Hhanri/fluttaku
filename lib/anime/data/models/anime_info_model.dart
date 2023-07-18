@@ -53,7 +53,14 @@ class AnimeInfoModel extends AnimeInfoEntity {
       type: json[AnimeDTOConstants.type],
       recommendations:
         (json[AnimeDTOConstants.recommendations] as List<dynamic>)
-          .map<AnimePreviewModel>((e) => AnimePreviewModel.fromJson(e))
+          .map<AnimePreviewModel?>((e) {
+            try {
+              return AnimePreviewModel.fromJson(e);
+            } catch (e) {
+              return null;
+            }
+          })
+          .whereType<AnimePreviewModel>()
           .toList(),
       episodes:
         (json[AnimeDTOConstants.episodes] as List<dynamic>)
@@ -64,9 +71,9 @@ class AnimeInfoModel extends AnimeInfoEntity {
 }
 
 class _Date {
-  final int year;
-  final int month;
-  final int day;
+  final int? year;
+  final int? month;
+  final int? day;
 
   _Date({
     required this.year,
@@ -82,7 +89,10 @@ class _Date {
     );
   }
 
-  DateTime toDateTime() {
-    return DateTime(year, month, day);
+  DateTime? toDateTime() {
+    if (year == null || month == null || day == null) {
+      return null;
+    }
+    return DateTime(year!, month!, day!);
   }
 }

@@ -1,7 +1,7 @@
 abstract class AnimeEpisodeInfoEntity {
   final String id;
-  final String title;
-  final String description;
+  final String? title;
+  final String? description;
   final int number;
   final String thumbnail;
 
