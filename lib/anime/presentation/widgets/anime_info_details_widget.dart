@@ -3,6 +3,7 @@ import 'package:fluttaku/anime/domain/entities/anime_preview_entity.dart';
 import 'package:fluttaku/anime/presentation/cubits/anime_info_cubit/anime_info_cubit.dart';
 import 'package:fluttaku/anime/presentation/widgets/cover_title_widget.dart';
 import 'package:fluttaku/core/config/theme.dart';
+import 'package:fluttaku/core/presentation/widgets/horizontal_list_view_layout.dart';
 import 'package:fluttaku/core/utils/media_query.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -73,28 +74,18 @@ class AnimeInfoDetailsWidget extends StatelessWidget {
   }
   
   Widget recommendation({required List<AnimePreviewEntity> animes, required double height}) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Padding(
-          padding: MyTheme.defaultPadding,
-          child: Text(
-            "Recommendations", style: MyTextStyle.sectionTitleStyle,
-          ),
-        ),
-        SizedBox(
-          height: height,
-          child: ListView.builder(
-            padding: MyTheme.defaultHorizontalPadding,
-            clipBehavior: Clip.none,
-            scrollDirection: Axis.horizontal,
-            itemCount: animes.length,
-            itemBuilder: (context, index) {
-              return CoverTitleWidget(animePreview: animes[index]);
-            }
-          ),
-        )
-      ],
+    return HorizontalListViewLayout(
+      title: "Recommendations",
+      height: height,
+      listView: ListView.builder(
+        padding: MyTheme.defaultHorizontalPadding,
+        clipBehavior: Clip.none,
+        scrollDirection: Axis.horizontal,
+        itemCount: animes.length,
+        itemBuilder: (context, index) {
+          return CoverTitleWidget(animePreview: animes[index]);
+        }
+      )
     );
   }
 }

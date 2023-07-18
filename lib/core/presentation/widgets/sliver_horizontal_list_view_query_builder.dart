@@ -1,6 +1,7 @@
 import 'package:fluttaku/core/config/theme.dart';
 import 'package:fluttaku/core/interfaces/search_result_interface.dart';
 import 'package:fluttaku/core/presentation/base_query_cubit/base_query_cubit.dart';
+import 'package:fluttaku/core/presentation/widgets/horizontal_list_view_layout.dart';
 import 'package:fluttaku/core/presentation/widgets/list_view_query_builder.dart';
 import 'package:fluttaku/core/service_locator.dart';
 import 'package:fluttaku/core/use_cases/use_case.dart';
@@ -23,26 +24,15 @@ class SliverHorizontalListViewQueryBuilder<
     return BlocProvider<C>(
       create: (context) => sl.get<C>(),
       child: SliverToBoxAdapter(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: MyTheme.defaultPadding,
-              child: Text(
-                title,
-                style: MyTextStyle.sectionTitleStyle,
-              ),
-            ),
-            SizedBox(
-              height: MediaQueryHelper.height(context, 0.3),
-              child: ListViewQueryBuilder<C, U, I>(
-                clipBehavior: Clip.none,
-                padding: MyTheme.defaultHorizontalPadding,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: itemBuilder,
-              ),
-            )
-          ],
+        child: HorizontalListViewLayout(
+          title: title,
+          height: MediaQueryHelper.height(context, 0.3),
+          listView: ListViewQueryBuilder<C, U, I>(
+            clipBehavior: Clip.none,
+            padding: MyTheme.defaultHorizontalPadding,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: itemBuilder,
+          )
         ),
       ),
     );
