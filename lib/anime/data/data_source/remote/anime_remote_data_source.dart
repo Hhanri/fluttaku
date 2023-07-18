@@ -62,11 +62,11 @@ class AnimeRemoteDataSource implements AnimeDataSourceInterface {
     final uri = "$apiBaseUrl$_infoEndPoint$animeId";
     final response = await _client.get(Uri.parse(uri));
 
-    if (response.statusCode != 200) {
-      //TODO: handle error
-    }
-
     final Map<String, dynamic> body = await jsonDecode(response.body);
+
+    if (response.statusCode != 200) {
+      throw Failure(message: body.toString(), code: response.statusCode);
+    }
 
     final searchResult = AnimeInfoModel.fromJson(body);
     return searchResult;
@@ -79,13 +79,13 @@ class AnimeRemoteDataSource implements AnimeDataSourceInterface {
 
     final response = await _client.get(uri);
 
+    final Map<String, dynamic> body = await jsonDecode(response.body);
+
     if (response.statusCode != 200) {
-      //TODO: handle error
+      throw Failure(message: body.toString(), code: response.statusCode);
     }
 
-    final Map<String, dynamic> body = await jsonDecode(response.body);
     final AnimeEpisodeLinksEntity episodeLinks = AnimeEpisodeLinksModel.fromJson(body);
     return episodeLinks;
   }
-
 }
