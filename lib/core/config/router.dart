@@ -1,3 +1,5 @@
+import 'package:fluttaku/anime/domain/entities/anime_preview_entity.dart';
+import 'package:fluttaku/anime/presentation/pages/anime_info_page.dart';
 import 'package:fluttaku/anime/presentation/screens/home_screen.dart';
 import 'package:fluttaku/anime/presentation/screens/search_anime_screen.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +36,14 @@ class MyGoRouter {
         name: searchRouteName,
         pageBuilder: (context, state) {
           return MaterialPage(child: SearchAnimeScreen());
+        }
+      ),
+
+      GoRoute(
+        path: animeRoute,
+        name: animeRouteName,
+        pageBuilder: (context, state) {
+          return MaterialPage(child: AnimeInfoPage(animePreview: state.extra as AnimePreviewEntity));
         }
       ),
     ]

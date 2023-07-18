@@ -92,6 +92,10 @@ class _CustomFlexibleSpaceBarState extends State<CustomFlexibleSpaceBar> {
           'A FlexibleSpaceBar must be wrapped in the widget returned by FlexibleSpaceBar.createSettings().',
         );
 
+        final List<Widget> children = <Widget>[];
+        final double deltaExtent = settings!.maxExtent - settings.minExtent;
+        final double t = clampDouble(1.0 - (settings.currentExtent - settings.minExtent) / deltaExtent, 0.0, 1.0);
+
         if (_pageController.hasClients) {
           if (constraints.maxHeight <= widget.maxDisplayHeight) {
             _pageController.animateToPage(0, duration: const Duration(milliseconds: 50), curve: Curves.easeInOut);
@@ -99,10 +103,6 @@ class _CustomFlexibleSpaceBarState extends State<CustomFlexibleSpaceBar> {
             _pageController.animateToPage(1, duration: const Duration(milliseconds: 50), curve: Curves.easeInOut);
           }
         }
-
-        final List<Widget> children = <Widget>[];
-        final double deltaExtent = settings!.maxExtent - settings.minExtent;
-        final double t = clampDouble(1.0 - (settings.currentExtent - settings.minExtent) / deltaExtent, 0.0, 1.0);
 
         //BACKGROUND
         if (widget.background != null) {
