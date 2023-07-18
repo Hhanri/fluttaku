@@ -10,9 +10,9 @@ abstract class AnimeInfoState extends Equatable {
   List<Object?> get props => [animePreview];
 }
 
-class AnimeInfoInitial extends AnimeInfoState {
+class AnimeInfoLoading extends AnimeInfoState {
 
-  const AnimeInfoInitial({required super.animePreview});
+  const AnimeInfoLoading({required super.animePreview});
 
   @override
   List<Object?> get props => [animePreview];

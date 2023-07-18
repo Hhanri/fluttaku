@@ -11,7 +11,7 @@ part 'anime_info_state.dart';
 class AnimeInfoCubit extends Cubit<AnimeInfoState> {
   final AnimePreviewEntity animePreview;
   final FetchAnimeInfoUseCase useCase;
-  AnimeInfoCubit({required this.animePreview, required this.useCase}) : super(AnimeInfoInitial(animePreview: animePreview));
+  AnimeInfoCubit({required this.animePreview, required this.useCase}) : super(AnimeInfoLoading(animePreview: animePreview));
 
   void init() async {
     final res = await useCase.call(animePreview.id);
