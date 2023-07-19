@@ -8,4 +8,6 @@ abstract class AnimeEpisodeLinksEntity {
     required this.sources,
     required this.downloadUrl
   });
+
+  List<AnimeEpisodeStreamingSourceEntity> get properSources;
 }

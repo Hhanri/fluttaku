@@ -1,5 +1,6 @@
 import 'package:fluttaku/anime/data/models/anime_episode_streaming_source_model.dart';
 import 'package:fluttaku/anime/domain/entities/anime_episode_links_entity.dart';
+import 'package:fluttaku/anime/domain/entities/anime_episode_streaming_source_entity.dart';
 import 'package:fluttaku/core/constants/anime_dto_constants.dart';
 
 class AnimeEpisodeLinksModel extends AnimeEpisodeLinksEntity {
@@ -17,4 +18,9 @@ class AnimeEpisodeLinksModel extends AnimeEpisodeLinksEntity {
       downloadUrl: json[AnimeDTOConstants.download]
     );
   }
+
+  @override
+  List<AnimeEpisodeStreamingSourceEntity> get properSources => sources
+    .where((element) => element.quality != "default" && element.quality != "backup")
+    .toList();
 }
