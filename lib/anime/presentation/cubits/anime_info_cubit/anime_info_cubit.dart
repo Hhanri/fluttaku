@@ -30,7 +30,6 @@ class AnimeInfoCubit extends Cubit<AnimeInfoState> {
 
   void changeNavBarState({required newState}) {
     navBarState = newState;
-    print(newState);
     emit(state.changeNavBarState(navBarState: navBarState));
   }
 }

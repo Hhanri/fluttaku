@@ -1,13 +1,16 @@
 import 'package:fluttaku/anime/data/data_source/anime_data_source_interface.dart';
 import 'package:fluttaku/anime/data/data_source/remote/anime_remote_data_source.dart';
 import 'package:fluttaku/anime/data/repository/anime_api_repository_implementation.dart';
+import 'package:fluttaku/anime/domain/entities/anime_episode_info_entity.dart';
 import 'package:fluttaku/anime/domain/entities/anime_preview_entity.dart';
 import 'package:fluttaku/anime/domain/repository/anime_api_repository_interface.dart';
 import 'package:fluttaku/anime/domain/use_cases/fetch_anime_info_use_case.dart';
+import 'package:fluttaku/anime/domain/use_cases/fetch_episode_links.dart';
 import 'package:fluttaku/anime/domain/use_cases/fetch_popular_animes_use_case.dart';
 import 'package:fluttaku/anime/domain/use_cases/fetch_trending_animes_use_case.dart';
 import 'package:fluttaku/anime/domain/use_cases/search_anime_use_case.dart';
 import 'package:fluttaku/anime/presentation/cubits/anime_info_cubit/anime_info_cubit.dart';
+import 'package:fluttaku/anime/presentation/cubits/episode_cubit/episode_cubit.dart';
 import 'package:fluttaku/anime/presentation/cubits/query_cubit/popular_animes_query_cubit.dart';
 import 'package:fluttaku/anime/presentation/cubits/query_cubit/trending_animes_query_cubit.dart';
 import 'package:fluttaku/anime/presentation/cubits/search_query_cubit/anime_search_query_cubit.dart';
@@ -32,10 +35,12 @@ void setupSL() {
   sl.registerLazySingleton<FetchTrendingAnimesUseCase>(() => FetchTrendingAnimesUseCase(sl.get<AnimeAPIRepositoryInterface>()));
   sl.registerLazySingleton<SearchAnimeUseCase>(() => SearchAnimeUseCase(sl.get<AnimeAPIRepositoryInterface>()));
   sl.registerLazySingleton<FetchAnimeInfoUseCase>(() => FetchAnimeInfoUseCase(sl.get<AnimeAPIRepositoryInterface>()));
+  sl.registerLazySingleton<FetchEpisodeLinksUseCase>(() => FetchEpisodeLinksUseCase(sl.get<AnimeAPIRepositoryInterface>()));
 
   //setup cubits
   sl.registerFactory<TrendingAnimesQueryCubit>(() => TrendingAnimesQueryCubit(useCase: sl.get<FetchTrendingAnimesUseCase>(), pageSize: defaultPageSize)..fetchMore());
   sl.registerFactory<PopularAnimesQueryCubit>(() => PopularAnimesQueryCubit(useCase: sl.get<FetchPopularAnimesUseCase>(), pageSize: defaultPageSize)..fetchMore());
   sl.registerFactory<AnimeSearchQueryCubit>(() => AnimeSearchQueryCubit(useCase: sl.get<SearchAnimeUseCase>(), pageSize: defaultPageSize));
   sl.registerFactoryParam<AnimeInfoCubit, AnimePreviewEntity, dynamic>((param1, _) => AnimeInfoCubit(animePreview: param1, useCase: sl.get<FetchAnimeInfoUseCase>()));
+  sl.registerFactoryParam<EpisodeCubit, AnimeEpisodeInfoEntity, dynamic>((param1, _) => EpisodeCubit(episodeInfo: param1, useCase: sl.get<FetchEpisodeLinksUseCase>()));
 }
