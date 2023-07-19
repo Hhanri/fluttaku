@@ -15,7 +15,7 @@ class CoverTitleWidget extends StatelessWidget {
     return GestureDetector(
       onTap: () => GoRouter.of(context).pushNamed(MyGoRouter.animeRouteName, extra: animePreview),
       child: SizedBox(
-        width: MediaQueryHelper.width(context, 0.3),
+        width: MediaQueryHelper.minWidthMaxHeight(context, 0.33),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

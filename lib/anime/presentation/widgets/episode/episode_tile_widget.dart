@@ -22,36 +22,35 @@ class EpisodeTileWidget extends StatelessWidget {
         ),
         clipBehavior: Clip.hardEdge,
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(
-              child: Container(
-                clipBehavior: Clip.hardEdge,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  borderRadius: MyTheme.defaultBorderRadius,
-                ),
-                child: Stack(
-                  children: [
-                    CachedNetworkImage(
-                      imageUrl: episode.thumbnail,
-                      fit: BoxFit.cover,
-                      height: MediaQueryHelper.width(context, 0.225),
-                      width: MediaQueryHelper.width(context, 0.4),
-                    ),
-                    Positioned(
-                      top: 0,
-                      left: 0,
-                      child: Container(
-                        padding: MyTheme.tinyPadding,
-                        decoration: const BoxDecoration(
-                          color: Colors.black87,
-                          borderRadius: BorderRadius.only(bottomRight: Radius.circular(MyTheme.defaultRadiusValue))
-                        ),
-                        child: Text(episode.number.toString(), style: MyTextStyle.ratingStyle,),
+            Container(
+              clipBehavior: Clip.hardEdge,
+              alignment: Alignment.centerLeft,
+              decoration: BoxDecoration(
+                borderRadius: MyTheme.defaultBorderRadius,
+              ),
+              child: Stack(
+                children: [
+                  CachedNetworkImage(
+                    imageUrl: episode.thumbnail,
+                    fit: BoxFit.cover,
+                    height: MediaQueryHelper.width(context, 0.225),
+                    width: MediaQueryHelper.width(context, 0.4),
+                  ),
+                  Positioned(
+                    top: 0,
+                    left: 0,
+                    child: Container(
+                      padding: MyTheme.tinyPadding,
+                      decoration: const BoxDecoration(
+                        color: Colors.black87,
+                        borderRadius: BorderRadius.only(bottomRight: Radius.circular(MyTheme.defaultRadiusValue))
                       ),
-                    )
-                  ],
-                ),
+                      child: Text(episode.number.toString(), style: MyTextStyle.ratingStyle,),
+                    ),
+                  )
+                ],
               ),
             ),
             SizedBox(width: MyTheme.defaultPadding.top,),

@@ -34,7 +34,7 @@ class AnimeInfoDetailsWidget extends StatelessWidget {
                 ),
               ),
 
-              recommendation(animes: state.animeInfo.recommendations, height: MediaQueryHelper.height(context, 0.3))
+              recommendation(animes: state.animeInfo.recommendations, height: MediaQueryHelper.responsiveWidthHeight(context, 0.3))
               
             ],
           );

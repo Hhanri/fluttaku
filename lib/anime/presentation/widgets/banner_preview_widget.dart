@@ -22,7 +22,7 @@ class BannerPreviewWidget extends StatelessWidget {
       onTap: () => GoRouter.of(context).pushNamed(MyGoRouter.animeRouteName, extra: animePreview),
       child: Container(
         margin: MyTheme.defaultAsymmetricPadding,
-        height: MediaQueryHelper.height(context, 0.25),
+        height: MediaQueryHelper.responsiveWidthHeight(context, 0.25),
         clipBehavior: Clip.hardEdge,
         decoration: BoxDecoration(
           color: MyColors.foregroundColor,

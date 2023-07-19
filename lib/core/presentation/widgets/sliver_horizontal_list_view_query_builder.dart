@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:fluttaku/core/config/theme.dart';
 import 'package:fluttaku/core/interfaces/search_result_interface.dart';
 import 'package:fluttaku/core/presentation/base_query_cubit/base_query_cubit.dart';
@@ -26,7 +28,7 @@ class SliverHorizontalListViewQueryBuilder<
       child: SliverToBoxAdapter(
         child: HorizontalListViewLayout(
           title: title,
-          height: MediaQueryHelper.height(context, 0.3),
+          height: MediaQueryHelper.responsiveWidthHeight(context, 0.3),
           listView: ListViewQueryBuilder<C, U, I>(
             clipBehavior: Clip.none,
             padding: MyTheme.defaultHorizontalPadding,
