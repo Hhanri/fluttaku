@@ -1,5 +1,7 @@
+import 'package:fluttaku/anime/domain/entities/anime_episode_info_entity.dart';
 import 'package:fluttaku/anime/domain/entities/anime_preview_entity.dart';
 import 'package:fluttaku/anime/presentation/pages/anime_info_page.dart';
+import 'package:fluttaku/anime/presentation/pages/episode_page.dart';
 import 'package:fluttaku/anime/presentation/screens/home_screen.dart';
 import 'package:fluttaku/anime/presentation/screens/search_anime_screen.dart';
 import 'package:flutter/material.dart';
@@ -44,8 +46,16 @@ class MyGoRouter {
         name: animeRouteName,
         pageBuilder: (context, state) {
           return MaterialPage(child: AnimeInfoPage(animePreview: state.extra as AnimePreviewEntity));
-        }
+        },
       ),
+
+      GoRoute(
+        path: episodeRoute,
+        name: episodeRouteName,
+        pageBuilder: (context, state) {
+          return MaterialPage(child: EpisodePage(episodeInfo: state.extra as AnimeEpisodeInfoEntity));
+        }
+      )
     ]
   );
 
@@ -57,5 +67,8 @@ class MyGoRouter {
 
   static const String animeRoute = "/anime";
   static const String animeRouteName = "anime";
+
+  static const String episodeRoute = "/episode";
+  static const String episodeRouteName = "episode";
 
 }
