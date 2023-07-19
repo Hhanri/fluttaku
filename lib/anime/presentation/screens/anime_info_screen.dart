@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fluttaku/anime/domain/entities/anime_preview_entity.dart';
 import 'package:fluttaku/anime/presentation/cubits/anime_info_cubit/anime_info_cubit.dart';
-import 'package:fluttaku/anime/presentation/widgets/anime_info_details_widget.dart';
-import 'package:fluttaku/anime/presentation/widgets/anime_info_episodes_widget.dart';
+import 'package:fluttaku/anime/presentation/widgets/anime_info/anime_info_details_widget.dart';
+import 'package:fluttaku/anime/presentation/widgets/anime_info/anime_info_episodes_widget.dart';
 import 'package:fluttaku/anime/presentation/widgets/cover_widget.dart';
-import 'package:fluttaku/anime/presentation/widgets/custom_flexible_space_bar.dart';
+import 'package:fluttaku/anime/presentation/widgets/anime_info/custom_flexible_space_bar.dart';
 import 'package:fluttaku/core/config/theme.dart';
 import 'package:fluttaku/core/presentation/widgets/anime_info_nav_bar.dart';
 import 'package:fluttaku/core/presentation/widgets/gradient_mask_shader.dart';
