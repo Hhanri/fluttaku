@@ -1,9 +1,9 @@
 import 'dart:ui';
 
-import 'package:fluttaku/anime/domain/entities/anime_episode_info_entity.dart';
 import 'package:fluttaku/anime/domain/entities/anime_preview_entity.dart';
 import 'package:fluttaku/anime/domain/entities/anime_title_entity.dart';
 import 'package:fluttaku/core/interfaces/airing_status.dart';
+import 'package:fluttaku/episode/domain/entities/episode_info_entity.dart';
 
 abstract class AnimeInfoEntity {
   final String id;
@@ -25,7 +25,7 @@ abstract class AnimeInfoEntity {
   final List<String> studios;
   final String type;
   final List<AnimePreviewEntity> recommendations;
-  final List<AnimeEpisodeInfoEntity> episodes;
+  final List<EpisodeInfoEntity> episodes;
 
   AnimeInfoEntity({
     required this.id,

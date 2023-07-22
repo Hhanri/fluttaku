@@ -1,11 +1,11 @@
-import 'package:fluttaku/anime/domain/entities/anime_episode_streaming_source_entity.dart';
+import 'package:fluttaku/episode/domain/entities/episode_streaming_source_entity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 Future<String?> showIosQualityModal({
   required BuildContext context,
-  required List<AnimeEpisodeStreamingSourceEntity> links,
+  required List<EpisodeStreamingSourceEntity> links,
   required String url
 }) async {
   return showCupertinoModalPopup<String>(
@@ -19,7 +19,7 @@ Future<String?> showIosQualityModal({
 
 Future<String?> showAndroidQualityModel({
   required BuildContext context,
-  required List<AnimeEpisodeStreamingSourceEntity> links,
+  required List<EpisodeStreamingSourceEntity> links,
   required String url
 }) {
   return showModalBottomSheet<String>(
@@ -32,7 +32,7 @@ Future<String?> showAndroidQualityModel({
 }
 
 class QualitySelectionWidget extends StatelessWidget {
-  final List<AnimeEpisodeStreamingSourceEntity> links;
+  final List<EpisodeStreamingSourceEntity> links;
   final String url;
   const QualitySelectionWidget({Key? key, required this.links, required this.url}) : super(key: key);
 

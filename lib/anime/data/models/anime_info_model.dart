@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:fluttaku/anime/data/models/anime_episode_info_model.dart';
+import 'package:fluttaku/episode/data/models/episode_info_model.dart';
 import 'package:fluttaku/anime/data/models/anime_preview_model.dart';
 import 'package:fluttaku/anime/data/models/anime_title_model.dart';
 import 'package:fluttaku/anime/domain/entities/anime_info_entity.dart';
@@ -64,7 +64,7 @@ class AnimeInfoModel extends AnimeInfoEntity {
           .toList(),
       episodes:
         (json[AnimeDTOConstants.episodes] as List<dynamic>)
-          .map<AnimeEpisodeInfoModel>((e) => AnimeEpisodeInfoModel.fromJson(e))
+          .map<EpisodeInfoModel>((e) => EpisodeInfoModel.fromJson(e))
           .toList()
     );
   }

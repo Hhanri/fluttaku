@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:chewie/chewie.dart';
 import 'package:equatable/equatable.dart';
-import 'package:fluttaku/anime/domain/entities/anime_episode_info_entity.dart';
-import 'package:fluttaku/anime/domain/entities/anime_episode_links_entity.dart';
-import 'package:fluttaku/anime/domain/use_cases/fetch_episode_links.dart';
-import 'package:fluttaku/anime/presentation/widgets/episode/quality_selection_widget.dart';
+import 'package:fluttaku/episode/domain/entities/episode_info_entity.dart';
+import 'package:fluttaku/episode/domain/entities/episode_links_entity.dart';
+import 'package:fluttaku/episode/domain/use_cases/fetch_episode_links.dart';
+import 'package:fluttaku/episode/presentation/widgets/quality_selection_widget.dart';
 import 'package:fluttaku/core/error/failure.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,11 +15,11 @@ part 'episode_state.dart';
 
 class EpisodeCubit extends Cubit<EpisodeState> {
   final FetchEpisodeLinksUseCase useCase;
-  final AnimeEpisodeInfoEntity episodeInfo;
+  final EpisodeInfoEntity episodeInfo;
 
   EpisodeCubit({required this.episodeInfo, required this.useCase}) : super(EpisodeLoadingState(episodeInfo: episodeInfo));
 
-  late AnimeEpisodeLinksEntity links;
+  late EpisodeLinksEntity links;
   ChewieController? _chewieController;
   VideoPlayerController? _videoPlayerController;
   String? currentlyPlayed;

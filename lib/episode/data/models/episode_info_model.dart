@@ -1,8 +1,8 @@
-import 'package:fluttaku/anime/domain/entities/anime_episode_info_entity.dart';
 import 'package:fluttaku/core/constants/anime_dto_constants.dart';
+import 'package:fluttaku/episode/domain/entities/episode_info_entity.dart';
 
-class AnimeEpisodeInfoModel extends AnimeEpisodeInfoEntity {
-  AnimeEpisodeInfoModel({
+class EpisodeInfoModel extends EpisodeInfoEntity {
+  EpisodeInfoModel({
     required super.id,
     required super.title,
     required super.description,
@@ -10,8 +10,8 @@ class AnimeEpisodeInfoModel extends AnimeEpisodeInfoEntity {
     required super.thumbnail
   });
 
-  factory AnimeEpisodeInfoModel.fromJson(Map<String, dynamic> json) {
-    return AnimeEpisodeInfoModel(
+  factory EpisodeInfoModel.fromJson(Map<String, dynamic> json) {
+    return EpisodeInfoModel(
       id: json[AnimeDTOConstants.id],
       title: json[AnimeDTOConstants.title],
       description: json[AnimeDTOConstants.description] ?? "",

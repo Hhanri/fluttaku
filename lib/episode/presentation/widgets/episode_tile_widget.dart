@@ -1,13 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:fluttaku/anime/domain/entities/anime_episode_info_entity.dart';
 import 'package:fluttaku/core/config/router.dart';
 import 'package:fluttaku/core/config/theme.dart';
 import 'package:fluttaku/core/utils/media_query.dart';
+import 'package:fluttaku/episode/domain/entities/episode_info_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class EpisodeTileWidget extends StatelessWidget {
-  final AnimeEpisodeInfoEntity episode;
+  final EpisodeInfoEntity episode;
   const EpisodeTileWidget({Key? key, required this.episode}) : super(key: key);
 
   @override

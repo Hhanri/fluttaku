@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import 'package:fluttaku/anime/data/models/anime_episode_links_model.dart';
+import 'package:fluttaku/episode/data/models/episode_links_model.dart';
 import 'package:fluttaku/anime/data/models/anime_info_model.dart';
 import 'package:fluttaku/anime/data/models/anime_search_result_model.dart';
 import 'package:fluttaku/anime/data/data_source/anime_data_source_interface.dart';
-import 'package:fluttaku/anime/domain/entities/anime_episode_links_entity.dart';
+import 'package:fluttaku/episode/domain/entities/episode_links_entity.dart';
 import 'package:fluttaku/anime/domain/entities/anime_info_entity.dart';
 import 'package:fluttaku/core/constants/default_page_size.dart';
 import 'package:fluttaku/core/error/failure.dart';
@@ -73,7 +73,7 @@ class AnimeRemoteDataSource implements AnimeDataSourceInterface {
   }
 
   @override
-  Future<AnimeEpisodeLinksEntity> fetchEpisodeLinks({required String episodeId}) async {
+  Future<EpisodeLinksEntity> fetchEpisodeLinks({required String episodeId}) async {
     final url = "$apiBaseUrl$_watchEndPoint$episodeId";
     final uri = Uri.parse(url);
 
@@ -85,7 +85,7 @@ class AnimeRemoteDataSource implements AnimeDataSourceInterface {
       throw Failure(message: body.toString(), code: response.statusCode);
     }
 
-    final AnimeEpisodeLinksEntity episodeLinks = AnimeEpisodeLinksModel.fromJson(body);
+    final EpisodeLinksEntity episodeLinks = EpisodeLinksModel.fromJson(body);
     return episodeLinks;
   }
 }

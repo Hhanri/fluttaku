@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:fluttaku/core/config/theme.dart';
 import 'package:fluttaku/core/interfaces/search_result_interface.dart';
 import 'package:fluttaku/core/presentation/base_query_cubit/base_query_cubit.dart';

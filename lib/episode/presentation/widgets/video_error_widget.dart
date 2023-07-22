@@ -1,6 +1,6 @@
-import 'package:fluttaku/anime/presentation/cubits/episode_cubit/episode_cubit.dart';
 import 'package:fluttaku/core/config/theme.dart';
 import 'package:fluttaku/core/error/failure.dart';
+import 'package:fluttaku/episode/presentation/cubits/episode_cubit/episode_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

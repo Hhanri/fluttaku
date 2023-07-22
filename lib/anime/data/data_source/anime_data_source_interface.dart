@@ -1,4 +1,4 @@
-import 'package:fluttaku/anime/domain/entities/anime_episode_links_entity.dart';
+import 'package:fluttaku/episode/domain/entities/episode_links_entity.dart';
 import 'package:fluttaku/anime/domain/entities/anime_info_entity.dart';
 import 'package:fluttaku/anime/domain/entities/anime_search_result_entity.dart';
 import 'package:fluttaku/core/constants/default_page_size.dart';
@@ -15,6 +15,5 @@ abstract class AnimeDataSourceInterface {
 
   Future<AnimeInfoEntity> fetchAnimeInfo({required String animeId});
 
-  Future<AnimeEpisodeLinksEntity> fetchEpisodeLinks({required String episodeId});
-
+  Future<EpisodeLinksEntity> fetchEpisodeLinks({required String episodeId});
 }

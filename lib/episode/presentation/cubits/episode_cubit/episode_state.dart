@@ -2,7 +2,7 @@ part of 'episode_cubit.dart';
 
 @immutable
 abstract class EpisodeState extends Equatable {
-  final AnimeEpisodeInfoEntity episodeInfo;
+  final EpisodeInfoEntity episodeInfo;
 
   const EpisodeState({required this.episodeInfo});
 
@@ -20,7 +20,7 @@ class EpisodeLoadingState extends EpisodeState {
 class EpisodeLoadedState extends EpisodeState {
   final ChewieController chewieController;
   final String url;
-  final AnimeEpisodeLinksEntity links;
+  final EpisodeLinksEntity links;
   const EpisodeLoadedState({
     required super.episodeInfo,
     required this.chewieController,

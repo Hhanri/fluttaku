@@ -1,11 +1,11 @@
-abstract class AnimeEpisodeInfoEntity {
+abstract class EpisodeInfoEntity {
   final String id;
   final String? title;
   final String? description;
   final int number;
   final String thumbnail;
 
-  AnimeEpisodeInfoEntity({
+  EpisodeInfoEntity({
     required this.id,
     required this.title,
     required this.description,

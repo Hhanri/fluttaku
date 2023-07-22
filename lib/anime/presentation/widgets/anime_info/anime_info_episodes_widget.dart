@@ -1,5 +1,5 @@
 import 'package:fluttaku/anime/presentation/cubits/anime_info_cubit/anime_info_cubit.dart';
-import 'package:fluttaku/anime/presentation/widgets/episode/episode_tile_widget.dart';
+import 'package:fluttaku/episode/presentation/widgets/episode_tile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

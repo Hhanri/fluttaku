@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:fluttaku/anime/data/data_source/anime_data_source_interface.dart';
-import 'package:fluttaku/anime/domain/entities/anime_episode_links_entity.dart';
 import 'package:fluttaku/anime/domain/entities/anime_info_entity.dart';
 import 'package:fluttaku/anime/domain/entities/anime_search_result_entity.dart';
 import 'package:fluttaku/anime/domain/repository/anime_api_repository_interface.dart';
@@ -16,11 +15,6 @@ class AnimeApiRepositoryImpl implements AnimeAPIRepositoryInterface {
   @override
   Future<Either<Failure, AnimeInfoEntity>> fetchAnimeInfo({required String animeId}) {
     return _fetch(() => dataSource.fetchAnimeInfo(animeId: animeId));
-  }
-
-  @override
-  Future<Either<Failure, AnimeEpisodeLinksEntity>> fetchEpisodeLinks({required String episodeId}) {
-    return _fetch(() => dataSource.fetchEpisodeLinks(episodeId: episodeId)) ;
   }
 
   @override

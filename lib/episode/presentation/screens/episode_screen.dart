@@ -1,7 +1,7 @@
 import 'package:chewie/chewie.dart';
-import 'package:fluttaku/anime/presentation/cubits/episode_cubit/episode_cubit.dart';
-import 'package:fluttaku/anime/presentation/widgets/episode/video_error_widget.dart';
 import 'package:fluttaku/core/config/theme.dart';
+import 'package:fluttaku/episode/presentation/cubits/episode_cubit/episode_cubit.dart';
+import 'package:fluttaku/episode/presentation/widgets/video_error_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

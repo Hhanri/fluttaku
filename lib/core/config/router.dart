@@ -1,9 +1,9 @@
-import 'package:fluttaku/anime/domain/entities/anime_episode_info_entity.dart';
 import 'package:fluttaku/anime/domain/entities/anime_preview_entity.dart';
 import 'package:fluttaku/anime/presentation/pages/anime_info_page.dart';
-import 'package:fluttaku/anime/presentation/pages/episode_page.dart';
+import 'package:fluttaku/episode/presentation/pages/episode_page.dart';
 import 'package:fluttaku/anime/presentation/screens/home_screen.dart';
 import 'package:fluttaku/anime/presentation/screens/search_anime_screen.dart';
+import 'package:fluttaku/episode/domain/entities/episode_info_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -53,7 +53,7 @@ class MyGoRouter {
         path: episodeRoute,
         name: episodeRouteName,
         pageBuilder: (context, state) {
-          return MaterialPage(child: EpisodePage(episodeInfo: state.extra as AnimeEpisodeInfoEntity));
+          return MaterialPage(child: EpisodePage(episodeInfo: state.extra as EpisodeInfoEntity));
         }
       )
     ]
