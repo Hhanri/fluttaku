@@ -9,6 +9,7 @@ import 'package:fluttaku/episode/presentation/widgets/quality_selection_widget.d
 import 'package:fluttaku/core/error/failure.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:video_player/video_player.dart';
 
 part 'episode_state.dart';
@@ -74,6 +75,7 @@ class EpisodeCubit extends Cubit<EpisodeState> {
   }
 
   void _selectQuality(BuildContext context) async {
+    GoRouter.of(context).pop();
     final newQuality = Platform.isIOS
       ? await showIosQualityModal(context: context, links: links.properSources, url: currentlyPlayed!)
       : await showAndroidQualityModel(context: context, links: links.properSources, url: currentlyPlayed!);
