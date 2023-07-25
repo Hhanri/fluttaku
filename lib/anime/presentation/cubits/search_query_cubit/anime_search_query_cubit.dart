@@ -25,7 +25,7 @@ class AnimeSearchQueryCubit extends BaseSearchQueryCubit<SearchAnimeUseCase, Ani
   }
 
   @override
-  void fetchMore() async {
+  Future<void> fetchMore() async {
     if (!hasMore || isFetching) return;
 
     final result = await useCase.call(
@@ -52,7 +52,7 @@ class AnimeSearchQueryCubit extends BaseSearchQueryCubit<SearchAnimeUseCase, Ani
   }
 
   @override
-  void search() async {
+  Future<void> search() async {
     if (query == textController.text || textController.text.trim().isEmpty) return;
     query = textController.text;
     hasMore = true;
@@ -79,8 +79,6 @@ class AnimeSearchQueryCubit extends BaseSearchQueryCubit<SearchAnimeUseCase, Ani
         emitNotLoading();
       }
     );
-
-    fetchMore();
   }
 
   void emitNotLoading() {

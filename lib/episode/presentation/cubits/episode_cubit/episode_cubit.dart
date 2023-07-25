@@ -25,7 +25,7 @@ class EpisodeCubit extends Cubit<EpisodeState> {
   VideoPlayerController? _videoPlayerController;
   String? currentlyPlayed;
 
-  void init() async {
+  Future<void> init() async {
     emit(EpisodeLoadingState(episodeInfo: episodeInfo));
     final res = await useCase.call(episodeInfo.id);
     res.fold(

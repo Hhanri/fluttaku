@@ -20,7 +20,7 @@ class AnimeInfoCubit extends Cubit<AnimeInfoState> {
 
   AnimeInfoNavBarState navBarState = AnimeInfoNavBarState.details;
 
-  void init() async {
+  Future<void> init() async {
     final res = await useCase.call(animePreview.id);
     res.fold(
       (error) => emit(AnimeInfoError(animePreview: animePreview, failure: error, navBarState: navBarState)),
@@ -28,7 +28,7 @@ class AnimeInfoCubit extends Cubit<AnimeInfoState> {
     );
   }
 
-  void changeNavBarState({required newState}) {
+  void changeNavBarState({required AnimeInfoNavBarState newState}) {
     navBarState = newState;
     emit(state.changeNavBarState(navBarState: navBarState));
   }

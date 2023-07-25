@@ -1,5 +1,3 @@
-import 'package:fluttaku/anime/data/models/anime_info_model.dart';
-import 'package:fluttaku/anime/data/models/anime_search_result_model.dart';
 import 'package:fluttaku/core/error/failure.dart';
 import 'package:fluttaku/episode/data/data_source/remote/episode_remote_data_source.dart';
 import 'package:fluttaku/episode/data/models/episode_links_model.dart';

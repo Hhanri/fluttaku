@@ -13,9 +13,9 @@ abstract class BaseSearchQueryCubit<U extends UseCase<SearchResultInterface<I>, 
   BaseSearchQueryCubit({required super.useCase, required super.pageSize}) : super(initialState: const BaseQueryNoInputState());
 
   @override
-  void fetchMore();
+  Future<void> fetchMore();
 
-  void search();
+  Future<void> search();
 
   void changeDisplayMode(SearchResultDisplayMode displayMode);
 

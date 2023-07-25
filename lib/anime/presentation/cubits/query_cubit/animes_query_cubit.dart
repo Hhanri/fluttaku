@@ -13,7 +13,7 @@ abstract class AnimesQueryCubit<U extends UseCase<AnimeSearchResultEntity, Query
   });
 
   @override
-  void fetchMore() async {
+  Future<void> fetchMore() async {
     if (!hasMore || isFetching) return;
 
     final result = await useCase.call(QueryParams(page: currentPage + 1, pageSize: pageSize));
