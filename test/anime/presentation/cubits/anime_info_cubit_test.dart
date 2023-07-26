@@ -26,9 +26,16 @@ void main() {
     currentEpisodesCount: 26
   );
 
-  final AnimeInfoCubit animeInfoCubit = AnimeInfoCubit(animePreview: animePreview, useCase: fetchAnimeInfoUseCase);
+
 
   group('anime info cubit', () {
+    late AnimeInfoCubit animeInfoCubit;
+
+    setUp(() {
+      animeInfoCubit = AnimeInfoCubit(animePreview: animePreview, useCase: fetchAnimeInfoUseCase);
+    });
+
+    tearDown(() => animeInfoCubit.close());
 
     test('initial state should be loading', () {
       expect(animeInfoCubit.state.runtimeType, AnimeInfoLoading);

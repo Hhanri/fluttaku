@@ -12,9 +12,15 @@ void main() {
   final repo = AnimeApiRepositoryImpl(dataSource);
   final searchAnimeUseCase = SearchAnimeUseCase(repo);
 
-  final searchQueryCubit = AnimeSearchQueryCubit(useCase: searchAnimeUseCase, pageSize: 3);
-
   group('search anime query cubit', () {
+
+    late AnimeSearchQueryCubit searchQueryCubit;
+
+    setUp(() {
+      searchQueryCubit = AnimeSearchQueryCubit(useCase: searchAnimeUseCase, pageSize: 3);
+    });
+
+    tearDown(() => searchQueryCubit.close());
 
     test('initial state should be no input', () {
       expect(searchQueryCubit.state.runtimeType, BaseQueryNoInputState<Never>);

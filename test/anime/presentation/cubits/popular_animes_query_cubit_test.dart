@@ -12,9 +12,15 @@ void main() {
   final repo = AnimeApiRepositoryImpl(dataSource);
   final fetchPopularAnimesUseCase = FetchPopularAnimesUseCase(repo);
 
-  final popularAnimesQueryCubit = PopularAnimesQueryCubit(useCase: fetchPopularAnimesUseCase, pageSize: 10);
-
   group('popular animes query cubit', () {
+
+    late PopularAnimesQueryCubit popularAnimesQueryCubit;
+
+    setUp(() {
+      popularAnimesQueryCubit = PopularAnimesQueryCubit(useCase: fetchPopularAnimesUseCase, pageSize: 10);
+    });
+
+    tearDown(() => popularAnimesQueryCubit.close());
 
     test('initial state should be loading', () {
       expect(popularAnimesQueryCubit.state.runtimeType, BaseQueryLoading<Never>);
