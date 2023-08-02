@@ -4,6 +4,7 @@ import 'package:fluttaku/anime/presentation/cubits/anime_info_cubit/anime_info_c
 import 'package:fluttaku/anime/presentation/widgets/cover_title_widget.dart';
 import 'package:fluttaku/core/config/theme.dart';
 import 'package:fluttaku/core/presentation/widgets/horizontal_list_view_layout.dart';
+import 'package:fluttaku/core/presentation/widgets/separated_list_view.dart';
 import 'package:fluttaku/core/utils/media_query.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -77,14 +78,13 @@ class AnimeInfoDetailsWidget extends StatelessWidget {
     return HorizontalListViewLayout(
       title: "Recommendations",
       height: height,
-      listView: ListView.builder(
+      listView: MySeparatedListView(
         padding: MyTheme.defaultHorizontalPadding,
-        clipBehavior: Clip.none,
         scrollDirection: Axis.horizontal,
         itemCount: animes.length,
         itemBuilder: (context, index) {
           return CoverTitleWidget(animePreview: animes[index]);
-        }
+        },
       )
     );
   }

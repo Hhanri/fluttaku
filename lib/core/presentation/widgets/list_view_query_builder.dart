@@ -1,6 +1,7 @@
 import 'package:fluttaku/core/interfaces/search_result_interface.dart';
 import 'package:fluttaku/core/presentation/base_query_cubit/base_query_cubit.dart';
 import 'package:fluttaku/core/presentation/widgets/query_builder.dart';
+import 'package:fluttaku/core/presentation/widgets/separated_list_view.dart';
 import 'package:fluttaku/core/use_cases/use_case.dart';
 import 'package:fluttaku/core/utils/anime_query_params.dart';
 import 'package:flutter/material.dart';
@@ -30,20 +31,17 @@ class ListViewQueryBuilder<
     this.clipBehavior = Clip.hardEdge,
   }) : super(
     builder: (context, state) {
-      return ListView.builder(
+      return MySeparatedListView(
         shrinkWrap: shrinkWrap,
         padding: padding,
-        physics: physics,
         scrollDirection: scrollDirection,
-        reverse: reverse,
-        clipBehavior: clipBehavior,
         itemCount: state.result.items.length,
         itemBuilder: (context, index) {
           if (state.isLastItem(index) && state.hasMore) context.read<C>().fetchMore();
 
           final doc = state.result.items[index];
           return itemBuilder(context, doc);
-        }
+        },
       );
     }
   );

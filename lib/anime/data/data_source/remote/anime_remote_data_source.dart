@@ -13,7 +13,7 @@ import 'package:http/http.dart' as http;
 class AnimeRemoteDataSource implements AnimeDataSourceInterface {
 
   final http.Client _client = http.Client();
-  final String apiBaseUrl = 'https://api.consumet.org/meta/anilist/';
+  final String apiBaseUrl = 'http://192.168.0.13:3000/meta/anilist/';
   final String _infoEndPoint = "info/";
   final String _watchEndPoint = "watch/";
   final String _popularEndPoint = "popular";
