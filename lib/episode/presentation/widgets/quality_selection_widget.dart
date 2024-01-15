@@ -3,25 +3,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-Future<String?> showIosQualityModal({
+Future<String?> showQualityModal({
   required BuildContext context,
   required List<EpisodeStreamingSourceEntity> links,
-  required String url
+  required String url,
+  required bool isIos
 }) async {
-  return showCupertinoModalPopup<String>(
-    context: context,
-    semanticsDismissible: true,
-    builder: (context) {
-      return QualitySelectionWidget(links: links, url: url,);
-    },
-  );
-}
-
-Future<String?> showAndroidQualityModel({
-  required BuildContext context,
-  required List<EpisodeStreamingSourceEntity> links,
-  required String url
-}) {
+  if (isIos) {
+    return showCupertinoModalPopup<String>(
+      context: context,
+      semanticsDismissible: true,
+      builder: (context) {
+        return QualitySelectionWidget(links: links, url: url,);
+      },
+    );
+  }
   return showModalBottomSheet<String>(
     context: context,
     isScrollControlled: true,

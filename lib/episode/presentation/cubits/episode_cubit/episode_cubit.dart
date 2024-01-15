@@ -76,9 +76,7 @@ class EpisodeCubit extends Cubit<EpisodeState> {
 
   void _selectQuality(BuildContext context) async {
     GoRouter.of(context).pop();
-    final newQuality = Platform.isIOS
-      ? await showIosQualityModal(context: context, links: links.properSources, url: currentlyPlayed!)
-      : await showAndroidQualityModel(context: context, links: links.properSources, url: currentlyPlayed!);
+    final newQuality = await showQualityModal(context: context, links: links.properSources, url: currentlyPlayed!, isIos: Platform.isIOS);
     if (newQuality == null || newQuality == currentlyPlayed) return;
     currentlyPlayed = newQuality;
     emitNewController(newQuality);
